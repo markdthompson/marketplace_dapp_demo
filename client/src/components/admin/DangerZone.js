@@ -50,10 +50,10 @@ class DangerZone extends Component{
 
         var destroyBttn = null;
 
-        if(isOwner){
-            destroyBttn = <Button type="submit" onClick={this.destroyContract} color="danger">Destroy Contract</Button>
+        if(isOwner && (Boolean(circuit && circuit.value)===true)){
+            destroyBttn = <Button id="destroy" type="submit" onClick={this.destroyContract} color="danger">Destroy Contract</Button>
         } else {
-            destroyBttn = <Button type="submit" disabled>Destroy Contract</Button>;
+            destroyBttn = <Button id="destroy" type="submit" onClick={this.destroyContract} color="danger" disabled>Destroy Contract</Button>
         }
 
         return(
