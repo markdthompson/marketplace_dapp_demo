@@ -57,6 +57,8 @@ contract Marketplace{
     struct Item {
         uint shopID;
         string name;
+        string description;
+        string ipfsImageHash;
         uint price;
         State state;
         address payable seller;
@@ -312,12 +314,12 @@ contract Marketplace{
     @param _name a required string name for the item
     @param _price a required price for the item
     */
-    function addItemToShop(uint _shopID, string memory _name, uint _price) public {
+    function addItemToShop(uint _shopID, string memory _name, string memory _desc, string memory _hash, uint _price) public {
         require(shops[_shopID].shopOwner == msg.sender, "Operation failed. Must be shop owner to post item to store.");
         require(_shopID >= 0 && bytes(_name).length > 0 && _price > 0, "shopID, name and price cannot be empty.");
 
         address payable _buyer;
-        items.push(Item({shopID:_shopID, name:_name, price:_price, state:State.ForSale, seller:msg.sender, buyer:_buyer}));
+        items.push(Item({shopID:_shopID, name:_name, description:_desc, ipfsImageHash:_hash, price:_price, state:State.ForSale, seller:msg.sender, buyer:_buyer}));
         shopItemCount[_shopID]++;
 
         emit AddedItemToShop(items.length-1);
@@ -331,12 +333,14 @@ contract Marketplace{
     @param _name a required string name for the item
     @param _price a required price for the item
     */
-    function editItem(uint _sku, uint _shopID, string memory _name, uint _price) public forSale(_sku) {
+    function editItem(uint _sku, uint _shopID, string memory _name, string memory _desc, string memory _hash, uint _price) public forSale(_sku) {
         require(shops[_shopID].shopOwner == msg.sender, "must be shop owner to edit an item's details.");
         require(_shopID >= 0 && bytes(_name).length > 0 && _price > 0, "shopID, name and price cannot be empty.");
 
         items[_sku].shopID = _shopID;
         items[_sku].name = _name;
+        items[_sku].description = _desc;
+        items[_sku].ipfsImageHash = _hash;
         items[_sku].price = _price;
 
         emit EditedItem(_sku);
