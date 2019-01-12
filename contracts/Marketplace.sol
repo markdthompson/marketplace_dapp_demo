@@ -235,7 +235,7 @@ contract Marketplace{
 
     /**
     @notice Remove an admin's permissions and account from admin list
-    @dev Only the owner can remove an admin's permissions
+    @dev Only admins can remove an admin's permissions
     */
     function removeAdmin(uint _index) public isAdmin {
         require(adminAccts[_index] != owner, "Can't remove admin perms from owner.");
