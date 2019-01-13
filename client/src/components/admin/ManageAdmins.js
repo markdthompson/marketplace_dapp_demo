@@ -3,7 +3,7 @@ import { Row, Col } from 'reactstrap';
 import AddAdmins from './AddAdmins';
 import ListAdmins from './ListAdmins';
 
-class ManageAdmins extends Component{
+export default class ManageAdmins extends Component{
     constructor(props){
         super(props);
         this.state = { isAdmin: null, isShopOwner: null };
@@ -21,13 +21,10 @@ class ManageAdmins extends Component{
                     <Row>
                         <Col><AddAdmins drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} /></Col>
                     </Row>
-
                     <hr />
                 </Col>
             </Row>
         )
     }
 }
-
-export default ManageAdmins;
  

@@ -14,7 +14,6 @@ export default class EventStream extends Component{
             if(err){
                 console.log(err);
             } else {
-                //console.log(result);
                 const event = result;
                 this.setState({event});
             }
@@ -22,7 +21,6 @@ export default class EventStream extends Component{
 
     }
 
-    // from : reddit logging_arbitrary_contract_events_with_truffle
     render() {
         let event = {
             name: null,
@@ -31,8 +29,6 @@ export default class EventStream extends Component{
         }
 
         let output = '';
-
-        //console.log(this.state.event);
 
         if(this.state.event !== null) {
             event.name = this.state.event.event;

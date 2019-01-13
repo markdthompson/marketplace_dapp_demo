@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import ManageAdmins from './ManageAdmins';
 import ManageShopOwners from './ManageShopOwners';
 import DangerZone from './DangerZone'
-import { Breadcrumb, BreadcrumbItem, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
-class Administration extends Component{
+export default class Administration extends Component{
     constructor(props){
         super(props);
         this.state = { isAdmin: null };
@@ -74,5 +74,3 @@ class Administration extends Component{
 
     }
 }
-
-export default Administration;

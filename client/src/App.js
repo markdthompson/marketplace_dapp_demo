@@ -7,7 +7,7 @@ import Unav from "./components/page/Unav";
 import EventStream from "./components/page/EventStream";
 
 import Marketplace from "./components/marketplace/Marketplace";
-import ManageShops from "./components/shop/ManageShops";
+import ShopManagement from "./components/shop/ShopManagement";
 import Administration from "./components/admin/Administration";
 
 
@@ -51,7 +51,7 @@ export default class App extends Component {
           <Unav drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} />
   
           <Route exact path="/" component={Marketplace} />
-          <Route path="/manage-shops" component={ManageShops} />
+          <Route path="/manage-shops" render={(props) => <ShopManagement {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } />
           <Route path="/admin" render={(props) => <Administration {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
           
           <EventStream drizzle={this.props.drizzle} drizzleState={this.state.drizzleState}/>

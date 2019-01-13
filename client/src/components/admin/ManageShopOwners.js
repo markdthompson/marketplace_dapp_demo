@@ -15,7 +15,6 @@ export default class ManageShopOwners extends Component{
                     <Row>
                         <Col><AddShopOwners drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} /></Col>
                     </Row>
-
                     <hr />
                 </Col>
             </Row>
