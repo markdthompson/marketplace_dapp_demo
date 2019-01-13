@@ -16,6 +16,7 @@ export default class AddAdmins extends Component{
     
     handleSubmit(e) {
         e.preventDefault(); 
+        if(e.target.admin_address.value === '') return;
         this.setValue(e.target.admin_address.value);
         e.target.admin_address.value = '';
     };

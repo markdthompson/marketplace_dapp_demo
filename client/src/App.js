@@ -4,12 +4,14 @@ import { Container, Row, Col } from 'reactstrap';
 
 // UI componenets
 import Unav from "./components/page/Unav";
+import EventStream from "./components/page/EventStream";
 
 import Marketplace from "./components/marketplace/Marketplace";
 import ManageShops from "./components/shop/ManageShops";
 import Administration from "./components/admin/Administration";
 
-class App extends Component {
+
+export default class App extends Component {
   state = { loading: true, drizzleState: null };
 
   componentDidMount() {
@@ -35,9 +37,14 @@ class App extends Component {
   render() {
     if (this.state.loading) return (
       <Container>
-        <Row><Col>Loading Drizzle...</Col></Row>
+        <Row>
+          <Col>
+            Loading Drizzle...
+          </Col>
+        </Row>
       </Container>
     )
+    //
     return (
       <Router>
         <Container>
@@ -47,10 +54,9 @@ class App extends Component {
           <Route path="/manage-shops" component={ManageShops} />
           <Route path="/admin" render={(props) => <Administration {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
           
+          <EventStream drizzle={this.props.drizzle} drizzleState={this.state.drizzleState}/>
         </Container>
       </Router>
     );
   }
 }
-
-export default App;

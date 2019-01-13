@@ -16,6 +16,7 @@ class AddShopOwners extends Component{
     
     handleSubmit(e) {
         e.preventDefault(); 
+        if(e.target.shopowner_address.value === '') return;
         this.setValue(e.target.shopowner_address.value);
         e.target.shopowner_address.value = '';
     };
