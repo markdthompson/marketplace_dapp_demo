@@ -15,7 +15,7 @@ export default class ActiveAddresses extends Component{
         }
 
         return(
-            <Table size="sm" style={tableStyle} bordered>
+            <Table size="sm" style={tableStyle} bordered responsive>
                 <thead><tr><th>Active User</th><th>Active Contract</th></tr></thead>
                 <tbody><tr><td>{ActiveUser}</td><td>{ActiveContract}</td></tr></tbody>
             </Table>
