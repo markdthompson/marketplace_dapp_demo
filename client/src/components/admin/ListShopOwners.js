@@ -56,7 +56,7 @@ class ListShopOwners extends Component{
                 return (
                     <div>
                         <h3>Shop Owner Accounts</h3>
-                        <Table size="sm" striped>
+                        <Table size="sm" striped responsive>
                             <thead><tr><th>Account Address</th><th>Action</th></tr></thead>
                             <tbody>{ownerList}</tbody>
                         </Table>

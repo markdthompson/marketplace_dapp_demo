@@ -59,7 +59,7 @@ export default class ListAdmins extends Component{
                 return (
                     <div>
                         <h3>Admin Accounts</h3>
-                        <Table size="sm" striped>
+                        <Table size="sm" striped responsive>
                             <thead><tr><th>Account Address</th><th>Action</th></tr></thead>
                             <tbody>{adminList}</tbody>
                         </Table>
