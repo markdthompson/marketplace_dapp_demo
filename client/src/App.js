@@ -54,7 +54,7 @@ export default class App extends Component {
           <Route exact path="/" component={Marketplace} />
           <Route path="/manage-shops" render={(props) => <ShopManagement {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } />
           <Route path="/admin" render={(props) => <Administration {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
-          <Route exact path="/shop:id" component={Shop} />
+          <Route exact path="/shop/:id" render={(props) => <Shop {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
 
           <EventStream drizzle={this.props.drizzle} drizzleState={this.state.drizzleState}/>
         </Container>
