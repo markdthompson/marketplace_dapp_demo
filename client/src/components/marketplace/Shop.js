@@ -18,11 +18,7 @@ export default class Shop extends Component{
         return(
             <Row id="inventory">
                 <Col>
-                    <Row>
-                        <Col>
-                            <h3>Shop {store.id}</h3>
-                        </Col>
-                    </Row>
+                    <h3>Shop {store.id}</h3>
                 </Col>
             </Row>
         )

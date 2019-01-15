@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 
 // UI componenets
@@ -10,6 +10,7 @@ import Marketplace from "./components/marketplace/Marketplace";
 import Shop from "./components/marketplace/Shop";
 import ShopManagement from "./components/shop/ShopManagement";
 import Administration from "./components/admin/Administration";
+import NotFound from "./components/page/NotFound";
 
 
 export default class App extends Component {
@@ -50,11 +51,14 @@ export default class App extends Component {
       <Router>
         <Container>
           <Unav drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} />
-  
-          <Route exact path="/" component={Marketplace} />
-          <Route path="/manage-shops" render={(props) => <ShopManagement {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } />
-          <Route path="/admin" render={(props) => <Administration {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
-          <Route exact path="/shop/:id" render={(props) => <Shop {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
+
+          <Switch>
+            <Route exact path="/" component={Marketplace} />
+            <Route path="/manage-shops" render={(props) => <ShopManagement {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } />
+            <Route path="/admin" render={(props) => <Administration {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
+            <Route exact path="/shop/:id" render={(props) => <Shop {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
+            <Route component={NotFound} />
+          </Switch>
 
           <EventStream drizzle={this.props.drizzle} drizzleState={this.state.drizzleState}/>
         </Container>
