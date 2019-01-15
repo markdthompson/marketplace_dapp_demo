@@ -2,19 +2,60 @@ import React, { Component } from 'react';
 import { Button, Table } from 'reactstrap';
 
 export default class ListProducts extends Component{
+
+    constructor(props){
+        super(props);
+        this.state = { items: null };
+    }
+    
+    componentDidMount() {
+    
+        const { drizzle, drizzleState } = this.props;
+        const contract = drizzle.contracts.Marketplace;
+        const account = drizzleState.accounts[0];
+    
+        // let drizzle know we want to watch the `get` method
+        const items = contract.methods["getItemsBySeller"].cacheCall(account, {from: account});
+    
+        // save the `dataKey` to local component state for later reference
+        this.setState({ items });
+    }
+
     render() {
 
-        return(
+        // get the contract state from drizzleState
+        const { Marketplace } = this.props.drizzleState.contracts;
+
+        // using the saved `dataKey`, get the variable we're interested in
+        const myItems = Marketplace.getItemsBySeller[this.state.items];
+
+        const l = (myItems && myItems.value);
+        
+        try{
+           
+            if(l.length !== undefined){
+
+                const itemList = l.map((item, index) =>
+                    <tr key={index}><td>{item}</td></tr>
+                )
             
-            <table>
-                <thead><tr><th>Address</th><th>ShopID</th><th>SKU</th><th>Name</th><th>Price</th><th>State</th><th>Buyer</th><th>Seller</th><th>Action</th></tr></thead>
-                <tbody>
-                    <tr><td>0x000000000000000000000000</td><td>0</td><td>0</td><td>Product 01</td><td>3</td><td>0</td><td>0x000000000000000000000000</td><td>0x000000000000000000000000</td><td><Button type="submit">Remove</Button></td></tr>
-                    <tr><td>0x000000000000000000000000</td><td>0</td><td>1</td><td>Product 02</td><td>5</td><td>0</td><td>0x000000000000000000000000</td><td>0x000000000000000000000000</td><td><Button type="submit">Remove</Button></td></tr>
-                    <tr><td>0x000000000000000000000000</td><td>0</td><td>2</td><td>Product 03</td><td>10</td><td>1</td><td>0x000000000000000000000000</td><td>0x000000000000000000000000</td><td><Button type="submit">Ship</Button></td></tr>
-                </tbody>
-            </table>
+                return (
+                    <div>
+                        <h3>My Products</h3>
+                        <Table size="sm" striped>
+                            <thead><tr><th>ItemID</th></tr></thead>
+                            <tbody>{itemList}</tbody>
+                        </Table>
+                    </div>
+                )
+            }    
+
+        } catch(err){
+           
+        }
+    
+        return(
+            <div><p>No products.</p></div>
         );
     }
 }
-

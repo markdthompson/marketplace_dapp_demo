@@ -5,7 +5,7 @@ export default class ListShops extends Component{
 
     constructor(props){
         super(props);
-        this.state = { shopIDs: null };
+        this.state = { shopIDs: null, shops: [] };
     }
     
     componentDidMount() {
@@ -30,38 +30,35 @@ export default class ListShops extends Component{
         const myIDs = Marketplace.getShopIDsByOwner[this.state.shopIDs];
 
         const l = (myIDs && myIDs.value);
-
-        console.log(l);
-        /*
+        
         try{
-           
+            
             if(l.length !== undefined){
 
-                const adminList = l.map((admin, index) =>
-                    <tr key={index}><td>{admin}</td><td>
-                        {
-                           (index < 1) ? <Button type="button" disabled>Owner</Button>
-                                        : <Button type="button" onClick={this.removeAdmin.bind(this, index)}>Remove</Button>
-                        }   
-                    </td></tr>
+                l.forEach((shop, index)=>{
+                    //console.log(shop);
+
+                })
+
+                const shopList = l.map((shop, index) =>
+                    <tr key={index}><td>{shop}</td></tr>
                 )
             
                 return (
                     <div>
-                        <h3>Admin Accounts</h3>
+                        <h3>My Shops</h3>
                         <Table size="sm" striped>
-                            <thead><tr><th>Account Address</th><th>Action</th></tr></thead>
-                            <tbody>{adminList}</tbody>
+                            <thead><tr><th>ShopID</th></tr></thead>
+                            <tbody>{shopList}</tbody>
                         </Table>
                     </div>
                 )
             }    
 
         } catch(err){
-           
+           //console.log(err);
         }
-        */
-
+    
         return(
             <div><p>No shops.</p></div>
         );

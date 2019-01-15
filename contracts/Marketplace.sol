@@ -68,6 +68,8 @@ contract Marketplace{
     Item[] public items;
     /// shop item list mapping
     mapping(uint => uint) private shopItemCount;
+    /// seller item list mapping
+    mapping(address => uint) private sellerItemCount;
     /// customer item list mapping
     mapping(address => uint) private customerItemCount;
 
@@ -321,6 +323,7 @@ contract Marketplace{
         address payable _buyer;
         items.push(Item({shopID:_shopID, name:_name, description:_desc, ipfsImageHash:_hash, price:_price, state:State.ForSale, seller:msg.sender, buyer:_buyer}));
         shopItemCount[_shopID]++;
+        sellerItemCount[msg.sender]++;
 
         emit AddedItemToShop(items.length-1);
     }
@@ -468,6 +471,24 @@ contract Marketplace{
 
         for (uint i = 0; i < items.length; i++) {
             if (items[i].shopID == _shopID) {
+                result[counter] = i;
+                counter++;
+            }
+        }
+        return result;
+    }
+
+    /**
+    @notice List item id's by seller
+    @dev Only the buyer can access their purchase history
+    @return array of uint indexes to items list
+    */
+    function getItemsBySeller(address _seller) public view verifyCaller(_seller) returns (uint[] memory) {
+        uint[] memory result = new uint[](sellerItemCount[msg.sender]);
+        uint counter = 0;
+
+        for (uint i = 0; i < items.length; i++) {
+            if (items[i].seller == msg.sender) {
                 result[counter] = i;
                 counter++;
             }
