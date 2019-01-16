@@ -4,51 +4,64 @@ import { Button, Table } from 'reactstrap';
 export default class ListShops extends Component{
 
     constructor(props){
+
         super(props);
-        this.state = { shopIDs: null, shops: [] };
+
+        this.state = { 
+            shops: [],
+         };
     }
     
     componentDidMount() {
-    
         const { drizzle, drizzleState } = this.props;
         const contract = drizzle.contracts.Marketplace;
         const account = drizzleState.accounts[0];
-    
-        // let drizzle know we want to watch the `get` method
-        const shopIDs = contract.methods["getShopIDsByOwner"].cacheCall(account, {from: account});
-    
-        // save the `dataKey` to local component state for later reference
-        this.setState({ shopIDs });
+
+        let shops = [];
+        
+        this.props.ids.value.forEach((shopID)=>{
+            shops.push(contract.methods["shops"].cacheCall(shopID, {from: account}));
+        }); 
+
+        this.setState({shops});
+    }
+
+    componentWillReceiveProps(props){
+        const {ids} = this.props;
+        if(props.ids !== ids){
+            const { drizzle, drizzleState } = this.props;
+            const contract = drizzle.contracts.Marketplace;
+            const account = drizzleState.accounts[0];
+
+            let shopID = this.state.shops.length;
+            this.state.shops.push(contract.methods["shops"].cacheCall(shopID, {from: account}));
+        }
+     
     }
 
     render() {
-
-        // get the contract state from drizzleState
+        
         const { Marketplace } = this.props.drizzleState.contracts;
 
-        // using the saved `dataKey`, get the variable we're interested in
-        const myIDs = Marketplace.getShopIDsByOwner[this.state.shopIDs];
-
-        const l = (myIDs && myIDs.value);
-        
+        let shops = [];
+        this.state.shops.forEach((key, index)=>{
+            let shop = Marketplace.shops[key];       
+            shops.push(shop && shop.value);
+        });
+    
         try{
             
-            if(l.length !== undefined){
+            if(shops.length >0 ){
 
-                l.forEach((shop, index)=>{
-                    //console.log(shop);
-
-                })
-
-                const shopList = l.map((shop, index) =>
-                    <tr key={index}><td>{shop}</td></tr>
+                const shopList = shops.map((shop, index) =>
+                    <tr key={index}><td>{index}</td><td>{shop.name}</td><td>{shop.category}</td></tr>
                 )
             
                 return (
                     <div>
                         <h3>My Shops</h3>
                         <Table size="sm" striped>
-                            <thead><tr><th>ShopID</th></tr></thead>
+                            <thead><tr><th>ShopID</th><th>Name</th><th>Category</th></tr></thead>
                             <tbody>{shopList}</tbody>
                         </Table>
                     </div>
@@ -60,7 +73,7 @@ export default class ListShops extends Component{
         }
     
         return(
-            <div><p>No shops.</p></div>
+            <div><p>You haven't opened any shops yet.</p></div>
         );
     }
 }

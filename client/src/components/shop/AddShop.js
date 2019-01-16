@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Input, Label, Alert } from 'reactstrap';
+import ListShops from "./ListShops";
+import { Button, Form, FormGroup, Input, Label, Alert, Row, Col} from 'reactstrap';
 
 export default class AddShop extends Component{
 
     constructor(props){
         super(props);
-        this.state = { stackId: null, txAlert: false };
+        this.state = { 
+            stackId: null, 
+            txAlert: false,
+        };
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onDismiss = this.onDismiss.bind(this);
     }
@@ -26,10 +31,11 @@ export default class AddShop extends Component{
 
         const { drizzle, drizzleState } = this.props;
         const contract = drizzle.contracts.Marketplace;
+        const account = drizzleState.accounts[0];
     
         // let drizzle know we want to call the `set` method with `value`
         const stackId = contract.methods["createShop"].cacheSend(name, category, {
-          from: drizzleState.accounts[0]
+          from: account
         });
     
         // save the `stackId` for later reference
@@ -52,10 +58,32 @@ export default class AddShop extends Component{
 
         // otherwise, return the transaction status
         return `Transaction status: ${transactions[txHash].status}`;
-      };
+    };
+
+
+
+    shopIDsUpdateCallback(){
+        const { Marketplace } = this.props.drizzleState.contracts;
+        const ids = Marketplace.getShopIDsByOwner[this.props.shopIDs];
+        return (ids);
+    }
 
     render() {
+
+        const ids = this.shopIDsUpdateCallback();
+
+        if(Boolean(ids && ids)) {
+
         return(
+            <Row>
+                <Col>
+            <Row>
+                <Col>
+                    <ListShops drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} ids={ids} />
+                </Col>
+            </Row>
+            <Row>
+                <Col>
             <div>
                 <h3>Open New Shop</h3>
                 <Form onSubmit={this.handleSubmit}>
@@ -74,10 +102,23 @@ export default class AddShop extends Component{
                     </FormGroup>
                     
                     <FormGroup>
-                        <Alert color="info" isOpen={this.state.txAlert} toggle={this.onDismiss}>{this.getTxStatus()}</Alert>
+                        <Alert color="success" isOpen={this.state.txAlert} toggle={this.onDismiss}>{this.getTxStatus()}</Alert>
                     </FormGroup>
                 </Form>
             </div>
+                </Col>
+            </Row>
+            </Col>
+        </Row>
         )
+        } else {
+            return (
+                <div id="manage_shop">
+                    <Row>
+                        <Col><p>No shops!</p></Col>
+                    </Row>
+                </div>
+            )
+        }
     }
 }

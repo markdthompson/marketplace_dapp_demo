@@ -14,7 +14,11 @@ import NotFound from "./components/page/NotFound";
 
 
 export default class App extends Component {
-  state = { loading: true, drizzleState: null };
+  state = { 
+    loading: true, 
+    drizzleState: null,
+    shopIDs: null 
+  };
 
   componentDidMount() {
       const { drizzle } = this.props;
@@ -27,6 +31,7 @@ export default class App extends Component {
   
         // check to see if it's ready, if so, update local component state
         if (drizzleState.drizzleStatus.initialized) {
+
           this.setState({ loading: false, drizzleState });
         }
       });
@@ -51,6 +56,7 @@ export default class App extends Component {
       <Router>
         <Container>
           <Unav drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} />
+          <EventStream drizzle={this.props.drizzle} drizzleState={this.state.drizzleState}/>
 
           <Switch>
             <Route exact path="/" component={Marketplace} />
@@ -59,8 +65,7 @@ export default class App extends Component {
             <Route exact path="/shop/:id" render={(props) => <Shop {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
             <Route component={NotFound} />
           </Switch>
-
-          <EventStream drizzle={this.props.drizzle} drizzleState={this.state.drizzleState}/>
+         
         </Container>
       </Router>
     );

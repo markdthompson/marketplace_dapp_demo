@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import {UncontrolledAlert} from 'reactstrap';
 
 export default class EventStream extends Component{
     constructor(props){
         super(props);
-        this.state = { event: null };
+        this.state = { 
+            event: null,
+
+        };
     }
 
     componentDidMount(){
@@ -35,7 +39,7 @@ export default class EventStream extends Component{
             event.address = this.state.event.address;
             event.block = this.state.event.blockNumber;
 
-            output = <span>Event:{event.name}, Address:{event.address}, BlockNumber:{event.block}</span>
+            output = <UncontrolledAlert color="info"><em>Last Event</em>: {event.name}, Address:{event.address}, BlockNumber:{event.block}</UncontrolledAlert>
         }
             
         return(

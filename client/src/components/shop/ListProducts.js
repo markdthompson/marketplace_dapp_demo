@@ -5,7 +5,9 @@ export default class ListProducts extends Component{
 
     constructor(props){
         super(props);
-        this.state = { items: null };
+        this.state = { 
+            items: []
+        };
     }
     
     componentDidMount() {

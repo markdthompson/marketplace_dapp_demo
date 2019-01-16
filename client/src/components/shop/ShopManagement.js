@@ -6,7 +6,11 @@ import { Row, Col } from 'reactstrap';
 export default class Administration extends Component{
     constructor(props){
         super(props);
-        this.state = { isShopOwner: null };
+        
+        this.state = { 
+            isShopOwner: null
+        };
+
     }
 
     componentDidMount() {
@@ -20,6 +24,7 @@ export default class Administration extends Component{
     
         // save the `dataKey` to local component state for later reference
         this.setState({ isShopOwner });
+       
     }
     
     render() {
