@@ -1,30 +1,27 @@
 import React, { Component } from 'react';
 import { Row, Col } from 'reactstrap';
 import AddProduct from "./AddProduct";
-import ListProducts from "./ListProducts";
 
 export default class ManageProducts extends Component{
     constructor(props){
         super(props);
-        this.state = { isAdmin: null, isShopOwner: null };
+        this.state = { 
+            itemIDs: null
+        };
+    }
+
+    componentDidMount() {
+        const { drizzle, drizzleState } = this.props;
+        const contract = drizzle.contracts.Marketplace;
+        const account = drizzleState.accounts[0];
+
+        this.setState({ itemIDs: contract.methods["getItemsBySeller"].cacheCall(account, {from: account})});
     }
     
     render() {
 
-        return(
-            <Row>
-                <Col>
-                    <Row>
-                        <Col><ListProducts drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} /></Col>
-                    </Row>
-
-                    <Row>
-                        <Col><AddProduct drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} /></Col>
-                    </Row>
-
-                    <hr />
-                </Col>
-            </Row>
+        return(  
+             <AddProduct drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} itemIDs={this.state.itemIDs}/>     
         )
     }
 }

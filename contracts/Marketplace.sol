@@ -42,6 +42,7 @@ contract Marketplace{
         string category;
     }
     Shop[] public shops;
+    uint shopCount = 0;
     mapping(address => uint) private ownerShopCount;
 
     /// item data structures
@@ -288,6 +289,7 @@ contract Marketplace{
 
         shops.push(Shop({shopOwner:msg.sender, name:_name, category:_category}));
         ownerShopCount[msg.sender]++;
+        shopCount++;
 
         emit CreatedShop(shops.length-1);
     }
@@ -438,6 +440,15 @@ contract Marketplace{
     */
     function listShopOwners() public view isAdmin returns(address[] memory){
         return shopOwnerAccts;
+    }
+
+    /**
+    @notice get the total number of shops
+    @dev used to present the main marketplace listing
+    @return uint count of shops
+    */
+    function getShopCount() public view returns(uint){
+        return shopCount;
     }
 
     /**

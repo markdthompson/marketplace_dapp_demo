@@ -11,41 +11,81 @@ export default class ListProducts extends Component{
     }
     
     componentDidMount() {
-    
         const { drizzle, drizzleState } = this.props;
         const contract = drizzle.contracts.Marketplace;
         const account = drizzleState.accounts[0];
-    
-        // let drizzle know we want to watch the `get` method
-        const items = contract.methods["getItemsBySeller"].cacheCall(account, {from: account});
-    
-        // save the `dataKey` to local component state for later reference
-        this.setState({ items });
+
+        let items = [];
+        
+        this.props.ids.value.forEach((itemID)=>{
+            items.push(contract.methods["items"].cacheCall(itemID, {from: account}));
+        }); 
+
+        this.setState({items});
+    }
+
+    componentWillReceiveProps(props){
+        const {ids} = this.props;
+        if(props.ids !== ids){
+            const { drizzle, drizzleState } = this.props;
+            const contract = drizzle.contracts.Marketplace;
+            const account = drizzleState.accounts[0];
+
+            let itemID = this.state.items.length;
+            this.state.items.push(contract.methods["items"].cacheCall(itemID, {from: account}));
+        }
+     
     }
 
     render() {
 
-        // get the contract state from drizzleState
         const { Marketplace } = this.props.drizzleState.contracts;
 
-        // using the saved `dataKey`, get the variable we're interested in
-        const myItems = Marketplace.getItemsBySeller[this.state.items];
-
-        const l = (myItems && myItems.value);
-        
+        let items = [];
+        this.state.items.forEach((key, index)=>{
+            let item= Marketplace.items[key];       
+            items.push(item && item.value);
+        });
+    
         try{
-           
-            if(l.length !== undefined){
+            
+            if(items.length >0 ){
 
-                const itemList = l.map((item, index) =>
-                    <tr key={index}><td>{item}</td></tr>
+                const itemList = items.map((item, index) =>
+                    <tr key={index}>
+                        <td>{item.shopID}</td>
+                        <td>{item.name}</td>
+                        <td></td>
+                        <td>{item.description}</td>
+                        <td>
+                            <a href={'https:ipfs.io/ipfs/' + item.ipfsImageHash} target="_blank" >
+                            {
+                                (item.ipfsImageHash !== '') ?
+                                    <img height="25" width="25" src={'https:ipfs.io/ipfs/' + item.ipfsImageHash} />
+                                : ''
+                            }
+                            </a>
+                        </td>
+                        <td>{item.price}</td>
+                        <td>{item.state}</td>
+                        <td>{item.buyer}</td>
+                    </tr>
                 )
             
                 return (
                     <div>
                         <h3>My Products</h3>
-                        <Table size="sm" striped>
-                            <thead><tr><th>ItemID</th></tr></thead>
+                        <Table size="sm" striped responsive>
+                            <thead><tr>
+                                <th>ShopID</th>
+                                <th>Name</th>
+                                <th>SKU</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th>Price</th>
+                                <th>State</th>
+                                <th>Buyer</th>
+                            </tr></thead>
                             <tbody>{itemList}</tbody>
                         </Table>
                     </div>

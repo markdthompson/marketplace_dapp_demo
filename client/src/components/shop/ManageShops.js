@@ -7,8 +7,6 @@ export default class ManageShops extends Component{
         super(props);
 
         this.state = { 
-            isAdmin: null, 
-            isShopOwner: null,
             shopIds: null
         };
     }

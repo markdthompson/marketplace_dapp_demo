@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import { Redirect, Switch, Route } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 
 // UI componenets
 import Unav from "./components/page/Unav";
 import EventStream from "./components/page/EventStream";
 
-import Marketplace from "./components/marketplace/Marketplace";
+import ShopListContainer from "./components/marketplace/ShopListContainer";
 import Shop from "./components/marketplace/Shop";
 import ShopManagement from "./components/shop/ShopManagement";
 import Administration from "./components/admin/Administration";
@@ -17,7 +17,6 @@ export default class App extends Component {
   state = { 
     loading: true, 
     drizzleState: null,
-    shopIDs: null 
   };
 
   componentDidMount() {
@@ -42,7 +41,8 @@ export default class App extends Component {
   }
 
   render() {
-    if (this.state.loading) return (
+    if (this.state.loading) {
+      return (
       <Container>
         <Row>
           <Col>
@@ -51,23 +51,28 @@ export default class App extends Component {
         </Row>
       </Container>
     )
-    //
+  } else {
+
     return (
-      <Router>
+        
         <Container>
+          
           <Unav drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} />
           <EventStream drizzle={this.props.drizzle} drizzleState={this.state.drizzleState}/>
 
           <Switch>
-            <Route exact path="/" component={Marketplace} />
+            <Route exact path="/" render={(props) => <ShopListContainer {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } />
             <Route path="/manage-shops" render={(props) => <ShopManagement {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } />
             <Route path="/admin" render={(props) => <Administration {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
-            <Route exact path="/shop/:id" render={(props) => <Shop {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
+            <Route path="/shops/:id" render={(props) => <ShopListContainer {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
             <Route component={NotFound} />
           </Switch>
+            
+         
          
         </Container>
-      </Router>
+      
     );
+    }
   }
 }

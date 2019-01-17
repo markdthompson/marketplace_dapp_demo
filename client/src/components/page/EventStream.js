@@ -39,7 +39,7 @@ export default class EventStream extends Component{
             event.address = this.state.event.address;
             event.block = this.state.event.blockNumber;
 
-            output = <UncontrolledAlert color="info"><em>Last Event</em>: {event.name}, Address:{event.address}, BlockNumber:{event.block}</UncontrolledAlert>
+            output = <UncontrolledAlert color="info"><em>Last Event</em>: {event.name}, Address: {event.address}, BlockNumber: {event.block}</UncontrolledAlert>
         }
             
         return(

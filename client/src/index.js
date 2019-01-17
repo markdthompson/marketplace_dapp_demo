@@ -4,6 +4,7 @@ import Marketplace from "./contracts/Marketplace.json";
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
@@ -17,7 +18,9 @@ const drizzle = new Drizzle(options, drizzleStore);
 
 
 ReactDOM.render(
-    <App drizzle={drizzle}/>,
+    <Router>
+        <App drizzle={drizzle}/>
+    </Router>,
     document.getElementById('root')
 );
 

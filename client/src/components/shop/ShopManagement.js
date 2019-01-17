@@ -43,12 +43,14 @@ export default class Administration extends Component{
                     <Row>
                         <Col>
                             <ManageShops drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} />
+                            <hr />
                         </Col>
                     </Row>
                     
                     <Row>
                         <Col>
                             <ManageProducts drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} />
+                            <hr />
                         </Col>
                     </Row>
            
