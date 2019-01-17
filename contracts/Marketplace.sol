@@ -67,6 +67,8 @@ contract Marketplace{
     }
     /// master item list
     Item[] public items;
+    /// count of all items
+    uint itemCount = 0;
     /// shop item list mapping
     mapping(uint => uint) private shopItemCount;
     /// seller item list mapping
@@ -326,6 +328,7 @@ contract Marketplace{
         items.push(Item({shopID:_shopID, name:_name, description:_desc, ipfsImageHash:_hash, price:_price, state:State.ForSale, seller:msg.sender, buyer:_buyer}));
         shopItemCount[_shopID]++;
         sellerItemCount[msg.sender]++;
+        itemCount++;
 
         emit AddedItemToShop(items.length-1);
     }
@@ -468,6 +471,15 @@ contract Marketplace{
             }
         }
         return result;
+    }
+
+   /**
+    @notice get the total number of items
+    @dev used to present the main marketplace listing
+    @return uint count of items
+    */
+    function getItemCount() public view returns(uint){
+        return itemCount;
     }
 
     /**

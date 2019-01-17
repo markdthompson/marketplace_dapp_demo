@@ -1,39 +1,63 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
+import { Table, Row, Col } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 export default class Shop extends Component{
     constructor(props){
         super(props);
-        
-        this.state = {
-            shop: null
-        };
-
+    
         console.log('Shop');
-    }
-
-    componentDidMount(){
-        const { drizzle, drizzleState } = this.props;
-        const contract = drizzle.contracts.Marketplace;
-        const account = drizzleState.accounts[0];
-
+        console.log(this.props);
     }
    
     render() {
-        const i = parseInt(this.props.match.params.id);
-        const myShop = this.props.shops[i];
+        const shopID = this.props.match.params.id;
+        const myShop = this.props.shops[shopID];
 
-        return(
-            <Row id="inventory">
-                <Col>
-                    <h3>{myShop.name}</h3>
+        if(this.props.items.length > 0 ){
+
+            const itemList = this.props.items.map((item, index) => {
+               if(item.shopID === shopID)
+                    return <tr key={index}>
+                                <td>{item.name}</td>
+                                <td>{item.description}</td>
+                            </tr>
+
+                    return ''
+            });
+
+            if(this.props.isShop){
+                console.log('This is a shop!!!')
+            }
+
+            return (
+                
+                <div>
+                    <h2>{myShop.name}</h2>
+
+                    <h3>Available Items</h3>
+                
+                    <Table size="sm" striped>
+                        <thead><tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                        </tr></thead>
+                        <tbody>{itemList}</tbody>
+                    </Table>
+                    
+                    <Link to="/">&lt;&lt; Back to Shops</Link>
+
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <h2>{myShop.name}</h2>
+                    <div>No items for sale!</div>
 
                     <Link to="/">&lt;&lt; Back to Shops</Link>
-                </Col>
-            </Row>
-
-        )
-
+                </div>
+            )
+        }    
     }
 }

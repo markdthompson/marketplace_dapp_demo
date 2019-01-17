@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 
 export default class ListProducts extends Component{
 
@@ -58,10 +58,15 @@ export default class ListProducts extends Component{
                         <td></td>
                         <td>{item.description}</td>
                         <td>
-                            <a href={'https:ipfs.io/ipfs/' + item.ipfsImageHash} target="_blank" >
+                            <a href={'https:ipfs.io/ipfs/' + item.ipfsImageHash} rel="noopener norefferrer" target="_blank"  >
                             {
                                 (item.ipfsImageHash !== '') ?
-                                    <img height="25" width="25" src={'https:ipfs.io/ipfs/' + item.ipfsImageHash} />
+                                    <img 
+                                        height="25" 
+                                        width="25" 
+                                        alt="" 
+                                        src={'https:ipfs.io/ipfs/' + item.ipfsImageHash} 
+                                    />
                                 : ''
                             }
                             </a>

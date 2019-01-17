@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
 import AddShop from "./AddShop";
 
 export default class ManageShops extends Component{

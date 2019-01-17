@@ -7,7 +7,7 @@ export default class ShopListContainer extends Component{
 
         this.state = { 
             shopCountKey: null,
-            prodIDs: null,
+            itemCountKey: null,
             isShop: false
         };
 
@@ -19,8 +19,11 @@ export default class ShopListContainer extends Component{
         const contract = drizzle.contracts.Marketplace;
         const account = drizzleState.accounts[0];
 
-        this.setState((prevState)=>(prevState.shopCountKey = contract.methods["getShopCount"].cacheCall({from: account})));
-    
+        this.setState((prevState)=> {
+            prevState.shopCountKey = contract.methods["getShopCount"].cacheCall({from: account});
+            prevState.itemCountKey = contract.methods["getItemCount"].cacheCall({from: account});
+        });
+
         if(this.props.match.path === "/shops/:id"){
             this.setState({isShop: true});
         } else {
@@ -30,7 +33,13 @@ export default class ShopListContainer extends Component{
     
     render() {
         return(
-            <MarketplaceContainer drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} shopCountKey={this.state.shopCountKey} isShop={this.state.isShop} />
+            <MarketplaceContainer 
+                drizzle={this.props.drizzle} 
+                drizzleState={this.props.drizzleState} 
+                shopCountKey={this.state.shopCountKey} 
+                itemCountKey={this.state.itemCountKey}
+                isShop={this.state.isShop} 
+            />
         )
     }
 }

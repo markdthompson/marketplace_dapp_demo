@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
 import AddProduct from "./AddProduct";
 
 export default class ManageProducts extends Component{

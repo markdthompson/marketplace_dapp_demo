@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Shop from "./Shop";
 import { Switch, Route, Link } from 'react-router-dom';
-import { Row, Col, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 
 export default class Marketplace extends Component{
 
@@ -9,9 +9,11 @@ export default class Marketplace extends Component{
         super(props);
         this.state = { 
             shops: [],
+            items: []
          };
 
          console.log('Marketplace');
+         console.log(this.props);
     }
     
     componentDidMount() {
@@ -19,28 +21,47 @@ export default class Marketplace extends Component{
         const contract = drizzle.contracts.Marketplace;
         const account = drizzleState.accounts[0];
 
+        // shops
         let shops = [];
-
         for( let i = 0; i<this.props.shopCount; i++){
             shops.push(contract.methods["shops"].cacheCall(i, {from: account}));
         }
-
+        console.log(shops);
         this.setState({shops});
+
+        // items
+        let items = [];
+        for( let i = 0; i<this.props.itemCount; i++){
+            contract.methods.items(i).call({from: account}).then((result) => {
+                items.push(result);
+                console.log(items);
+                this.setState({items});
+            });
+        }
+        
     }
 
     render() {
         
         const { Marketplace } = this.props.drizzleState.contracts;
 
+        // shops
         let shops = [];
         this.state.shops.forEach((key)=>{
             let shop = Marketplace.shops[key];       
             shops.push(shop && shop.value);
         });
+
+        // items
+        let items = [];
+        this.state.items.forEach((key)=>{
+            let item = Marketplace.items[key];       
+            items.push(item && item.value);
+        });
     
         try{
             
-            if(shops.length >0 ){
+            if(shops.length > 0 ){
 
                 const shopList = shops.map((shop, index) => 
                     <tr key={index}>
@@ -48,9 +69,7 @@ export default class Marketplace extends Component{
                         <td>{shop.category}</td>
                     </tr>
                 )
-                if(this.props.isShop){
-                    console.log('This is a shop!!!')
-                }
+                
                 return (
                     
                     <div>
@@ -65,7 +84,7 @@ export default class Marketplace extends Component{
                         </Table>
 
                         <Switch>
-                            <Route exact path="/shops/:id" render={(props) => <Shop {...props} drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} shops={shops} /> } /> 
+                            <Route exact path="/shops/:id" render={(props) => <Shop {...props} drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} shops={shops} items={this.state.items} /> } /> 
                         </Switch>
                     
                     </div>

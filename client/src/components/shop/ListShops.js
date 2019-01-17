@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 
 export default class ListShops extends Component{
 

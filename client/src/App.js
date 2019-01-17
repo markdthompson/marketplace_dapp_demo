@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 
 // UI componenets
@@ -7,7 +7,6 @@ import Unav from "./components/page/Unav";
 import EventStream from "./components/page/EventStream";
 
 import ShopListContainer from "./components/marketplace/ShopListContainer";
-import Shop from "./components/marketplace/Shop";
 import ShopManagement from "./components/shop/ShopManagement";
 import Administration from "./components/admin/Administration";
 import NotFound from "./components/page/NotFound";
