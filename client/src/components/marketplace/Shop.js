@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Row, Col } from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 export default class Shop extends Component{
@@ -16,36 +16,64 @@ export default class Shop extends Component{
 
         if(this.props.items[this.props.items.length-1] !== undefined ){
 
-            const itemList = this.props.items.map((item, index) => {
-               if(item.shopID === shopID)
-                    return <tr key={index}>
-                                <td>{item.name}</td>
-                                <td>{item.description}</td>
-                            </tr>
+            // filter items for only those beloning to this shop
+            let myItems = [];
+            for(let i=0; i<this.props.items.length; i++){
+                // make sure it's mine...
+                if(this.props.items[i].shopID === shopID){
+                    console.log(this.props.items[i]);
+                    // and that it's available
+                    if(this.props.items[i].state === '0'){
+                        myItems.push(this.props.items[i]);
+                    }
+                }
+            }
 
-                    return ''
-            });
+            // any shops in my store?
+            if(myItems.length){
 
-        
-            return (
+                const itemList = myItems.map((item, index) => {
+                    return <Card key={index} >
+                                <CardImg top src={'https://ipfs.io/ipfs/' +  item.ipfsImageHash} width="25"/>
+                                <CardBody>
+                                    <CardTitle>{item.name}</CardTitle>
+                                    <CardSubtitle>{item.description}</CardSubtitle>
+                                    <CardText>Price: {item.price} wei</CardText>
+                                    <Button>Buy Now</Button>
+                                </CardBody>
+                            </Card>
+                });
+            
+                return (
+                    <div>
+                        <h2>{myShop.name}</h2>
+
+                        <h3>Available Items</h3>
                 
-                <div>
-                    <h2>{myShop.name}</h2>
+                        <div className="inventory">{itemList}</div>
+                                          
+                        <div className="shop-footer">
+                            <Link to="/">&lt;&lt; Back to Shops</Link>
+                        </div>
+                    </div>
+                )
 
-                    <h3>Available Items</h3>
+            } else {
+                return (
+                    <div>
+                        <h2>{myShop.name}</h2>
+
+                        <h3>Available Items</h3>
                 
-                    <Table size="sm" striped>
-                        <thead><tr>
-                            <th>Name</th>
-                            <th>Description</th>
-                        </tr></thead>
-                        <tbody>{itemList}</tbody>
-                    </Table>
+                        <div>{myShop.name} doesn't have any items posted for sale.</div>
                     
-                    <Link to="/">&lt;&lt; Back to Shops</Link>
+                        <Link to="/">&lt;&lt; Back to Shops</Link>
 
-                </div>
-            )
+                    </div>
+                )
+
+            }
+                
         } else {
             return (
                 <div>
