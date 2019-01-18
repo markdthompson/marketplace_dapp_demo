@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Marketplace from "./Marketplace";
+import TheMarketplace from "./TheMarketplace";
 
 export default class MarketplaceContainer extends Component{
 
@@ -7,7 +7,8 @@ export default class MarketplaceContainer extends Component{
         super(props);
 
         this.state = {
-            itemCount: 0
+            itemKeys: null,
+            shopKeys: null
         }
 
         console.log("MarketplaceContainer");
@@ -18,50 +19,34 @@ export default class MarketplaceContainer extends Component{
         const { drizzle, drizzleState } = this.props;
         const contract = drizzle.contracts.Marketplace;
         const account = drizzleState.accounts[0];
+        
+        // shops
+        const shopKeys = [];
+        for( let i = 0; i<this.props.shopCount; i++){
+            shopKeys.push(contract.methods['shops'].cacheCall(i,{from: account}));
+        }
+        this.setState({shopKeys});
 
-        contract.methods.getItemCount().call({from: account}).then((result) =>{
-            this.setState({itemCount: result});
-        });
-    }
-
-
-    getShopCountHandler(){
-
-        const { Marketplace } = this.props.drizzleState.contracts;
-        const count = Marketplace.getShopCount[this.props.shopCountKey];
-        const limit = count && count.value;
-     
-        return (limit);
-    }
-
-    getItemCountHandler(){
-
-        const { Marketplace } = this.props.drizzleState.contracts;
-        const count = Marketplace.getItemCount[this.props.itemCountKey];
-        const limit = count && count.value;
-     
-        return (limit);
+        const itemKeys = [];
+        for( let i = 0; i<this.props.itemCount; i++){
+            itemKeys.push(contract.methods['items'].cacheCall(i,{from: account}));
+        }
+        this.setState({itemKeys});
     }
 
     render() {
+        const { Marketplace } = this.props.drizzleState.contracts;
 
-        const shopCount = this.getShopCountHandler();
-        const itemCount = this.state.itemCount;
-
-        if(shopCount) {
+        if(this.state.shopKeys === null || this.state.itemKeys === null){
+            console.log('loading..');
             return (
-                <Marketplace 
-                    drizzle={this.props.drizzle} 
-                    drizzleState={this.props.drizzleState} 
-                    shopCount={shopCount} 
-                    itemCount={itemCount} 
-                    isShop={this.props.isShop} 
-                />
-            )
+                <div>Loading...</div>
+            );
+
         } else {
-            // new install onboarding instructions here...
-            return (
-                <div id="marketplace">
+            if(!this.state.shopKeys.length){
+                return (
+                    <div id="marketplace">
                     <h1>Welcome</h1>
                     <p>Welcome to the Marketplace Demo Dapp! To get started, follow these steps:</p>
 
@@ -72,8 +57,111 @@ export default class MarketplaceContainer extends Component{
                     <h2>3) Add Some Products</h2>
 
                     <h2>4) Tell Your Friends!</h2>
-                </div>
-            )
+                    </div>
+                )
+            } else {
+
+                const items = [];
+                const shops = [];
+            
+                this.state.itemKeys.forEach((key)=>{
+                    let item = Marketplace.items[key]; 
+                    //console.log(item && item.value);      
+                    items.push(item && item.value);
+                });
+        
+                this.state.shopKeys.forEach((key)=>{
+                    let shop = Marketplace.shops[key];
+                    //console.log(shop && shop.value);       
+                    shops.push(shop && shop.value);
+                });
+        
+                try {
+        
+                    if(!Boolean(shops[shops.length-1]) || !Boolean(shops[shops.length-1])){
+                        return (
+                            <div>Loading...</div>
+                        )
+                    } else {
+                        return (
+                            <TheMarketplace 
+                                drizzle={this.props.drizzle} 
+                                drizzleState={this.props.drizzleState} 
+                                shops={shops}
+                                items={items}
+                                isShop={this.props.isShop} 
+                            />
+                        )
+        
+                    }
+        
+                } catch(err){
+                    console.log(err);
+                    
+                }
+
+            }
         }
+ 
     }
 }
+
+/*
+const { Marketplace } = this.props.drizzleState.contracts;
+            const items = [];
+            const shops = [];
+    
+               
+                //console.log(this.state.shopKeys);
+                
+            this.state.itemKeys.forEach((key)=>{
+                let item = Marketplace.items[key]; 
+                console.log(item && item.value);      
+                items.push(item && item.value);
+            });
+    
+            this.state.shopKeys.forEach((key)=>{
+                let shop = Marketplace.shops[key];
+                console.log(shop && shop.value);       
+                shops.push(shop && shop.value);
+            });
+
+            try {
+
+                if(shops.length !== undefined){
+                    return (
+                        <Marketplace 
+                            drizzle={this.props.drizzle} 
+                            drizzleState={this.props.drizzleState} 
+                            shops={shops}
+                            items={items}
+                            isShop={this.props.isShop} 
+                        />
+                    )
+                } else {
+                    // new install onboarding instructions here...
+                    return (
+                        <div id="marketplace">
+                            <h1>Welcome</h1>
+                            <p>Welcome to the Marketplace Demo Dapp! To get started, follow these steps:</p>
+    
+                            <h2>1) Add a Shop Owner</h2>
+    
+                            <h2>2) Open a Shop</h2>
+    
+                            <h2>3) Add Some Products</h2>
+    
+                            <h2>4) Tell Your Friends!</h2>
+                        </div>
+                    )
+                }
+
+            } catch(err){
+                console.log(err);
+                
+            }
+        
+            return(
+                <div>Error</div>
+            )
+*/

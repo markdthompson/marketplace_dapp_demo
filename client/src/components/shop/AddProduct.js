@@ -9,12 +9,12 @@ export default class AddProduct extends Component{
        
         this.state = { 
             stackId: null, 
-            txAlert: false,
+            prodTxAlert: false,
             buffer:''
           };
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.onDismiss = this.onDismiss.bind(this);
+        this.onProdDismiss = this.onProdDismiss.bind(this);
         this.itemIDsUpdateCallback = this.itemIDsUpdateCallback.bind(this);
     }
 
@@ -56,7 +56,7 @@ export default class AddProduct extends Component{
             await ipfs.add(this.state.buffer, (err, ipfsHash) => {
 
                 if(err){
-                    console.log(err);
+                    //console.log(err);
                     return;
                 }
 
@@ -70,12 +70,12 @@ export default class AddProduct extends Component{
         
       };
 
-    onDismiss(){
-        this.setState({txAlert: false});
+    onProdDismiss(){
+        this.setState({prodTxAlert: false});
     }
     
     setValues(shopID, name, desc, price, hash) {
-        console.log("in setValues");
+        //console.log("in setValues");
         const { drizzle, drizzleState } = this.props;
         const contract = drizzle.contracts.Marketplace;
         const account = drizzleState.accounts[0];
@@ -95,8 +95,8 @@ export default class AddProduct extends Component{
         this.setState({txAlert: true});
     };
     
-    getTxStatus(){
-        console.log("in getTxStatus");
+    getProdTxStatus(){
+        //console.log("in getTxStatus");
         // get the transaction states from the drizzle state
         const { transactions, transactionStack } = this.props.drizzleState;
     
@@ -114,7 +114,7 @@ export default class AddProduct extends Component{
       };
 
     itemIDsUpdateCallback(){
-        console.log("in itemIDsUpdateCallback");
+        //console.log("in itemIDsUpdateCallback");
         const { Marketplace } = this.props.drizzleState.contracts;
         const ids = Marketplace.getItemsBySeller[this.props.itemIDs];
         //console.log(ids);
@@ -122,7 +122,7 @@ export default class AddProduct extends Component{
     }
 
     render() {
-        console.log("in render")
+        //console.log("in render")
         const ids = this.itemIDsUpdateCallback();
 
         if(Boolean(ids && ids)) {
@@ -170,7 +170,7 @@ export default class AddProduct extends Component{
                     </FormGroup>
                     
                     <FormGroup>
-                        <Alert color="info" isOpen={this.state.txAlert} toggle={this.onDismiss}>{this.getTxStatus()}</Alert>
+                        <Alert color="info" isOpen={this.state.prodTxAlert} toggle={this.onProdDismiss}>{this.getProdTxStatus()}</Alert>
                     </FormGroup>
                 </Form>
             </div>
@@ -224,7 +224,7 @@ export default class AddProduct extends Component{
                     </FormGroup>
                     
                     <FormGroup>
-                        <Alert color="info" isOpen={this.state.txAlert} toggle={this.onDismiss}>{this.getTxStatus()}</Alert>
+                        <Alert color="info" isOpen={this.state.prodTxAlert} toggle={this.onProdDismiss}>{this.getProdTxStatus()}</Alert>
                     </FormGroup>
                 </Form>
             </div>
