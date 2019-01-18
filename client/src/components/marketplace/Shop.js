@@ -14,7 +14,7 @@ export default class Shop extends Component{
         const shopID = this.props.match.params.id;
         const myShop = this.props.shops[shopID];
 
-        if(this.props.items.length > 0 ){
+        if(this.props.items[this.props.items.length-1] !== undefined ){
 
             const itemList = this.props.items.map((item, index) => {
                if(item.shopID === shopID)
@@ -26,10 +26,7 @@ export default class Shop extends Component{
                     return ''
             });
 
-            if(this.props.isShop){
-                console.log('This is a shop!!!')
-            }
-
+        
             return (
                 
                 <div>

@@ -1,21 +1,16 @@
 import React, { Component } from 'react';
-import Shop from "./Shop";
 import { Switch, Route, Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
 
-export default class TheMarketplace extends Component{
+export default class ViewMarketplace extends Component{
 
     constructor(props){
         super(props);
         this.state = { 
-         };
+        };
 
-         console.log('Marketplace');
+         console.log('ViewMarketplace');
          console.log(this.props);
-    }
-    
-    componentDidMount() {
- 
     }
 
     render() {  
@@ -42,21 +37,19 @@ export default class TheMarketplace extends Component{
                             </tr></thead>
                             <tbody>{shopList}</tbody>
                         </Table>
-
-                        <Switch>
-                            <Route exact path="/shops/:id" render={(props) => <Shop {...props} drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} shops={this.props.shops} items={this.props.items} /> } /> 
-                        </Switch>
                     
                     </div>
                 )
             }    
-
-        //} catch(err){
-           //console.log(err);
-        //}
 
         return(
             <div><p>You haven't opened any shops yet.</p></div>
         );
     }
 }
+
+/*
+                       <Switch>
+                            <Route exact path="/shops/:id" render={(props) => <Shop {...props} drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} shops={this.props.shops} items={this.props.items} /> } /> 
+                        </Switch>
+                        */

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Shop from "./Shop";
-import ViewMarketplace from "./ViewMarketplace";
 
-export default class MarketplaceContainer extends Component{
+export default class ShopContainer extends Component{
 
     constructor(props){
         super(props);
@@ -12,7 +11,7 @@ export default class MarketplaceContainer extends Component{
             shopKeys: null
         }
 
-        console.log("MarketplaceContainer");
+        console.log("ShopContainer");
         console.log(this.props);
     }
 
@@ -84,19 +83,29 @@ export default class MarketplaceContainer extends Component{
                             <div>Loading...</div>
                         )
                     } else {
-                        return (
-                            <ViewMarketplace 
-                                drizzle={this.props.drizzle} 
-                                drizzleState={this.props.drizzleState} 
-                                shops={shops}
-                                items={items}
-                            />
-                        )
+                        if(this.props.isShop){
+                            return (
+                                <Shop 
+                                    drizzle={this.props.drizzle} 
+                                    drizzleState={this.props.drizzleState} 
+                                    shops={shops} 
+                                    items={items}
+                                    match={this.props.match} 
+                                />
+                            )
+
+                        } else  {
+                            return (
+                                <div>Shop not found.</div>
+                            )
+                        }
                     }
         
                 } catch(err){
                     console.log(err);
+                    
                 }
+
             }
         }
  

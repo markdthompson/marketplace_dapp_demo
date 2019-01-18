@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Unav from "./components/page/Unav";
 import EventStream from "./components/page/EventStream";
 
+import MarketplaceListContainer from "./components/marketplace/MarketplaceListContainer";
 import ShopListContainer from "./components/marketplace/ShopListContainer";
 import ShopManagement from "./components/shop/ShopManagement";
 import Administration from "./components/admin/Administration";
@@ -60,14 +61,12 @@ export default class App extends Component {
           <EventStream drizzle={this.props.drizzle} drizzleState={this.state.drizzleState}/>
 
           <Switch>
-            <Route exact path="/" render={(props) => <ShopListContainer {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } />
+            <Route exact path="/" render={(props) => <MarketplaceListContainer {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } />
             <Route path="/manage-shops" render={(props) => <ShopManagement {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } />
             <Route path="/admin" render={(props) => <Administration {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
             <Route path="/shops/:id" render={(props) => <ShopListContainer {...props} drizzle={this.props.drizzle} drizzleState={this.state.drizzleState} /> } /> 
             <Route component={NotFound} />
           </Switch>
-            
-         
          
         </Container>
       

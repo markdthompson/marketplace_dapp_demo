@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ShopContainer from "./ShopContainer";
+import MarketplaceContainer from "./MarketplaceContainer";
 
-export default class ShopListContainer extends Component{
+export default class MarketplaceListContainer extends Component{
     constructor(props){
         super(props);
 
@@ -12,7 +12,7 @@ export default class ShopListContainer extends Component{
             match: null
         };
 
-        console.log("shopListContainer");
+        console.log("MarketplaceListContainer");
         console.log(this.props);
     }
 
@@ -58,7 +58,7 @@ export default class ShopListContainer extends Component{
             } else {
 
                 return(
-                    <ShopContainer 
+                    <MarketplaceContainer 
                         drizzle={this.props.drizzle} 
                         drizzleState={this.props.drizzleState} 
                         shopCount= { shopCount }
