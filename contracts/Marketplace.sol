@@ -57,6 +57,7 @@ contract Marketplace{
     /// Item object structure
     struct Item {
         uint shopID;
+        uint sku;
         string name;
         string description;
         string ipfsImageHash;
@@ -318,6 +319,8 @@ contract Marketplace{
     @dev Only the shop's shopowner can add an item to a shop
     @param _shopID a uint index to look up the shop in the shop list
     @param _name a required string name for the item
+    @param _desc a description
+    @param _hash an ipfs file hash for image lookup
     @param _price a required price for the item
     */
     function addItemToShop(uint _shopID, string memory _name, string memory _desc, string memory _hash, uint _price) public {
@@ -325,7 +328,7 @@ contract Marketplace{
         require(_shopID >= 0 && bytes(_name).length > 0 && _price > 0, "shopID, name and price cannot be empty.");
 
         address payable _buyer;
-        items.push(Item({shopID:_shopID, name:_name, description:_desc, ipfsImageHash:_hash, price:_price, state:State.ForSale, seller:msg.sender, buyer:_buyer}));
+        items.push(Item({shopID:_shopID, sku: itemCount, name:_name, description:_desc, ipfsImageHash:_hash, price:_price, state:State.ForSale, seller:msg.sender, buyer:_buyer}));
         shopItemCount[_shopID]++;
         sellerItemCount[msg.sender]++;
         itemCount++;

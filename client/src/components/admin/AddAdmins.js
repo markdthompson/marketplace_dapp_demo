@@ -35,7 +35,7 @@ export default class AddAdmins extends Component{
         this.setState({ stackId });
         this.setState({txAlert: true});
     };
-    
+
     getTxStatus = () => {
         // get the transaction states from the drizzle state
         const { transactions, transactionStack } = this.props.drizzleState;
@@ -52,6 +52,8 @@ export default class AddAdmins extends Component{
         // otherwise, return the transaction status
         return `Transaction status: ${transactions[txHash].status}`;
       };
+
+    
 
     render() {
         return(

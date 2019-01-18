@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap';
+import { CardDeck, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 export default class Shop extends Component{
@@ -9,6 +9,49 @@ export default class Shop extends Component{
         console.log('Shop');
         console.log(this.props);
     }
+
+    onDismiss(){
+        this.setState({txAlert: false});
+    }
+
+    handleBuy(sku, price) {
+        console.log(price);
+        this.setValue(sku, price);
+    };
+
+    setValue(_sku, _price) {
+        const sku = parseInt(_sku);
+        const price = parseInt(_price);
+
+        const { drizzle, drizzleState } = this.props;
+        const contract = drizzle.contracts.Marketplace;
+    
+        // let drizzle know we want to call the `set` method with `value`
+        const stackId = contract.methods["buyItem"].cacheSend(sku, {
+          from: drizzleState.accounts[0], value: price
+        });
+    
+        // save the `stackId` for later reference
+        //this.setState({ stackId });
+        //this.setState({txAlert: true});
+    };
+    
+    getTxStatus = () => {
+        // get the transaction states from the drizzle state
+        const { transactions, transactionStack } = this.props.drizzleState;
+    
+        // get the transaction hash using our saved `stackId`
+        const txHash = transactionStack[this.state.stackId];
+    
+        // if transaction hash does not exist, don't display anything
+        if (!txHash) {
+
+            return 'Connecting...';
+        }
+
+        // otherwise, return the transaction status
+        return `Transaction status: ${transactions[txHash].status}`;
+      };
    
     render() {
         const shopID = this.props.match.params.id;
@@ -21,11 +64,7 @@ export default class Shop extends Component{
             for(let i=0; i<this.props.items.length; i++){
                 // make sure it's mine...
                 if(this.props.items[i].shopID === shopID){
-                    console.log(this.props.items[i]);
-                    // and that it's available
-                    if(this.props.items[i].state === '0'){
-                        myItems.push(this.props.items[i]);
-                    }
+                    myItems.push(this.props.items[i]);
                 }
             }
 
@@ -39,7 +78,11 @@ export default class Shop extends Component{
                                     <CardTitle>{item.name}</CardTitle>
                                     <CardSubtitle>{item.description}</CardSubtitle>
                                     <CardText>Price: {item.price} wei</CardText>
-                                    <Button>Buy Now</Button>
+                                    
+                                    {item.state === '0' ? (
+                                        <Button onClick={this.handleBuy.bind(this, item.sku, item.price)} >Buy Now</Button> ) : (
+                                        <Button disabled onClick={this.handleBuy.bind(this, item.sku, item.price)} >Sold!</Button> 
+                                    )}
                                 </CardBody>
                             </Card>
                 });
@@ -50,7 +93,9 @@ export default class Shop extends Component{
 
                         <h3>Available Items</h3>
                 
-                        <div className="inventory">{itemList}</div>
+                        <CardDeck>
+                            {itemList}
+                        </CardDeck>
                                           
                         <div className="shop-footer">
                             <Link to="/">&lt;&lt; Back to Shops</Link>
