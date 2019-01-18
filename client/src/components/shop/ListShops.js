@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table } from 'reactstrap';
+import { Table, Button } from 'reactstrap';
 
 export default class ListShops extends Component{
 
@@ -39,6 +39,26 @@ export default class ListShops extends Component{
      
     }
 
+    handleWithdrawal(_shopID){
+        this.setValue(_shopID);
+    }
+
+    setValue(_shopID) {
+        const shopID = parseInt(_shopID);
+
+        const { drizzle, drizzleState } = this.props;
+        const contract = drizzle.contracts.Marketplace;
+    
+        // let drizzle know we want to call the `set` method with `value`
+        const stackId = contract.methods["withdrawFunds"].cacheSend(shopID, {
+          from: drizzleState.accounts[0]
+        });
+    
+        // save the `stackId` for later reference
+        //this.setState({ stackId });
+        //this.setState({txAlert: true});
+    };
+
     render() {
         
         const { Marketplace } = this.props.drizzleState.contracts;
@@ -54,14 +74,26 @@ export default class ListShops extends Component{
             if(shops.length >0 ){
 
                 const shopList = shops.map((shop, index) =>
-                    <tr key={index}><td>{index}</td><td>{shop.name}</td><td>{shop.category}</td></tr>
+                    <tr key={index}>
+                        <td>{index}</td>
+                        <td>{shop.name}</td>
+                        <td>{shop.category}</td>
+                        <td>{shop.balance}</td>
+                        <td><Button onClick={this.handleWithdrawal.bind(this, index)}>Withdraw Balance</Button></td>
+                    </tr>
                 )
             
                 return (
                     <div>
                         <h3>My Shops</h3>
                         <Table size="sm" striped>
-                            <thead><tr><th>ShopID</th><th>Name</th><th>Category</th></tr></thead>
+                            <thead><tr>
+                                <th>ShopID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Balance (wei)</th>
+                                <th>Action</th>
+                            </tr></thead>
                             <tbody>{shopList}</tbody>
                         </Table>
                     </div>

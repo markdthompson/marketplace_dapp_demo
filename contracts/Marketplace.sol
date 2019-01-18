@@ -40,6 +40,7 @@ contract Marketplace{
         address shopOwner;
         string name;
         string category;
+        uint balance;
     }
     Shop[] public shops;
     uint shopCount = 0;
@@ -92,6 +93,7 @@ contract Marketplace{
     /// shop CRUD
     event CreatedShop(uint _shopID);
     event EditedShop(uint _shopID);
+    event WithdrewFunds(uint _shipID, uint _amount);
 
     /// inventory mgmt
     event AddedItemToShop(uint _sku);
@@ -290,7 +292,7 @@ contract Marketplace{
     function createShop(string memory _name, string memory _category) public isShopOwner{
         require(bytes(_name).length > 0, "Operation failed. Name cannot be empty.");
 
-        shops.push(Shop({shopOwner:msg.sender, name:_name, category:_category}));
+        shops.push(Shop({shopOwner:msg.sender, name:_name, category:_category, balance:0}));
         ownerShopCount[msg.sender]++;
         shopCount++;
 
@@ -312,6 +314,21 @@ contract Marketplace{
         shops[_shopID].category = _category;
 
         emit EditedShop(_shopID);
+    }
+
+    /**
+    @notice Withdraw a shop's balance
+    @dev Only the shop's shopowner can withdraw funds
+    @param _shopID a uint index to look up the shop in the shop list
+    */
+    function withdrawFunds(uint _shopID) public {
+        require(shops[_shopID].shopOwner == msg.sender, "Operation failed. Must be shopowner to edit shop.");
+        
+        uint amount = shops[_shopID].balance;
+        shops[_shopID].balance = 0;
+        msg.sender.transfer(amount);
+
+        emit WithdrewFunds(_shopID, amount);
     }
 
     /**
@@ -363,12 +380,12 @@ contract Marketplace{
     @param _sku a uint index to look up the item to buy
     */
     function buyItem(uint _sku) public payable forSale(_sku) checkValue(_sku){
-        items[_sku].seller.transfer(items[_sku].price);
+
         items[_sku].buyer = msg.sender;
         items[_sku].state = State.Sold;
-
         customerItemCount[msg.sender]++;
 
+        shops[items[_sku].shopID].balance = shops[items[_sku].shopID].balance + items[_sku].price;
         emit SoldItem(_sku);
     }
 
