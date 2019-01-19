@@ -80,13 +80,15 @@ export default class AddProduct extends Component{
         const contract = drizzle.contracts.Marketplace;
         const account = drizzleState.accounts[0];
 
+        const _price = drizzle.web3.utils.toWei(price, 'finney'); 
+
         // let drizzle know we want to call the `set` method with `value`
         const stackId = contract.methods["addItemToShop"].cacheSend(
             shopID, 
             name, 
             desc,
             hash,
-            price,
+            _price,
             {from: account}
         );
     
@@ -156,7 +158,7 @@ export default class AddProduct extends Component{
                     </FormGroup>
 
                     <FormGroup>
-                        <Label htmlFor="prod_price">Price</Label>
+                        <Label htmlFor="prod_price">Price (in Finney)</Label>
                         <Input id="prod_price" name="prod_price" type="text" placeholder="3" />
                     </FormGroup>
 

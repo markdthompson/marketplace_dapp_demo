@@ -117,7 +117,7 @@ export default class Shop extends Component{
                                 <CardBody>
                                     <CardTitle>{item.name}</CardTitle>
                                     <CardSubtitle>{item.description}</CardSubtitle>
-                                    <CardText>Price: {item.price} wei</CardText>
+                                    <CardText>Price: {this.props.drizzle.web3.utils.fromWei(item.price,'finney')} finney</CardText>
                                     
                                     {item.state === '0' ? (
                                         <Button onClick={this.handleBuy.bind(this, item.sku, item.price)} >Buy Now</Button> ) : (

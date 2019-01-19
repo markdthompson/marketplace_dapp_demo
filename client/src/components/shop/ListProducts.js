@@ -69,6 +69,7 @@ export default class ListProducts extends Component{
     render() {
 
         const { Marketplace } = this.props.drizzleState.contracts;
+        
         if(this.state.itemKeys === null){
             return (
                 <div>
@@ -116,7 +117,7 @@ export default class ListProducts extends Component{
                                         : ''}
                                     </a>
                                 </td>
-                                <td>{item.price}</td>
+                                <td>{this.props.drizzle.web3.utils.fromWei(item.price,'finney')}</td>
                                 <td>{item.buyer}</td>
                                 <td>{item.state}</td>
                                 { item.state === '0' ? (
@@ -148,7 +149,7 @@ export default class ListProducts extends Component{
                                         <th>SKU</th>
                                         <th>Description</th>
                                         <th>Image</th>
-                                        <th>Price</th>
+                                        <th>Price (finney)</th>
                                         <th>Buyer</th>
                                         <th>State</th>
                                         <th>Action</th>
