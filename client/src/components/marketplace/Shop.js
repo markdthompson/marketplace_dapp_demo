@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CardDeck, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col } from 'reactstrap';
+import { CardDeck, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 export default class Shop extends Component{
@@ -45,7 +45,6 @@ export default class Shop extends Component{
     
         // if transaction hash does not exist, don't display anything
         if (!txHash) {
-
             return 'Connecting...';
         }
 
@@ -116,9 +115,8 @@ export default class Shop extends Component{
 
                     </div>
                 )
-
             }
-                
+
         } else {
             return (
                 <div>
