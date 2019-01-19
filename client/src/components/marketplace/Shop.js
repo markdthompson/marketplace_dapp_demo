@@ -5,6 +5,11 @@ import {Link} from 'react-router-dom';
 export default class Shop extends Component{
     constructor(props){
         super(props);
+        
+        this.state = {
+            stackID: null,
+            txAlert: false
+        }
     
         console.log('Shop');
         console.log(this.props);
@@ -16,10 +21,10 @@ export default class Shop extends Component{
 
     handleBuy(sku, price) {
         console.log(price);
-        this.setValue(sku, price);
+        this.buy(sku, price);
     };
 
-    setValue(_sku, _price) {
+    buy(_sku, _price) {
         const sku = parseInt(_sku);
         const price = parseInt(_price);
 
@@ -32,8 +37,29 @@ export default class Shop extends Component{
         });
     
         // save the `stackId` for later reference
-        //this.setState({ stackId });
-        //this.setState({txAlert: true});
+        this.setState({ stackId });
+        this.setState({txAlert: true});
+    };
+
+    handleReceive(sku) {
+        console.log(sku);
+        this.receive(sku);
+    };
+
+    receive(_sku) {
+        const sku = parseInt(_sku);
+
+        const { drizzle, drizzleState } = this.props;
+        const contract = drizzle.contracts.Marketplace;
+    
+        // let drizzle know we want to call the `set` method with `value`
+        const stackId = contract.methods["receiveItem"].cacheSend(sku, {
+          from: drizzleState.accounts[0]
+        });
+    
+        // save the `stackId` for later reference
+        this.setState({ stackId });
+        this.setState({txAlert: true});
     };
     
     getTxStatus = () => {
@@ -53,6 +79,8 @@ export default class Shop extends Component{
       };
    
     render() {
+        const account = this.props.drizzleState.accounts[0];
+
         const shopID = this.props.match.params.id;
         const myShop = this.props.shops[shopID];
 
@@ -61,9 +89,22 @@ export default class Shop extends Component{
             // filter items for only those beloning to this shop
             let myItems = [];
             for(let i=0; i<this.props.items.length; i++){
-                // make sure it's mine...
+                
+                // make sure it belongs to this store
                 if(this.props.items[i].shopID === shopID){
-                    myItems.push(this.props.items[i]);
+                    // and that it's still for sale
+                    if(this.props.items[i].state === '0') {
+                        myItems.push(this.props.items[i]);
+                    } else {
+                        // or that it ws ordered by this user
+                        if(this.props.items[i].buyer === account) {
+                            // and is awaiting shipment or was shipped but not received
+                            if(this.props.items[i].state === '1' || this.props.items[i].state === '2'){
+                                myItems.push(this.props.items[i]);
+                            }  
+                        }
+                    }
+                    
                 }
             }
 
@@ -80,7 +121,15 @@ export default class Shop extends Component{
                                     
                                     {item.state === '0' ? (
                                         <Button onClick={this.handleBuy.bind(this, item.sku, item.price)} >Buy Now</Button> ) : (
-                                        <Button disabled onClick={this.handleBuy.bind(this, item.sku, item.price)} >Sold!</Button> 
+                                            item.state === '1' && item.buyer === account ? (
+                                                <Button disabled>Ordered</Button> 
+                                            ) : (
+                                                item.state === '2' && item.buyer === account ? (
+                                                    <Button onClick={this.handleReceive.bind(this, item.sku)} >Receive</Button>
+                                                ) : (
+                                                <Button disabled>Sold!</Button> 
+                                                )
+                                            )
                                     )}
                                 </CardBody>
                             </Card>
@@ -88,9 +137,7 @@ export default class Shop extends Component{
             
                 return (
                     <div>
-                        <h2>{myShop.name}</h2>
-
-                        <h3>Available Items</h3>
+                        <h1>{myShop.name}</h1>
                 
                         <CardDeck>
                             {itemList}
@@ -106,8 +153,6 @@ export default class Shop extends Component{
                 return (
                     <div>
                         <h2>{myShop.name}</h2>
-
-                        <h3>Available Items</h3>
                 
                         <div>{myShop.name} doesn't have any items posted for sale.</div>
                     

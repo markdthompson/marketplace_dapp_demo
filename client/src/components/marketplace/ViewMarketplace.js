@@ -28,7 +28,7 @@ export default class ViewMarketplace extends Component{
                 return (
                     
                     <div>
-                        <h3>The Shops</h3>
+                        <h1>The Shops</h1>
                     
                         <Table size="sm" striped>
                             <thead><tr>
@@ -37,7 +37,9 @@ export default class ViewMarketplace extends Component{
                             </tr></thead>
                             <tbody>{shopList}</tbody>
                         </Table>
-                    
+                        <div>
+                            <p>*Email me at <a href="mailto:thomesoni@gmail.com">thomesoni@gmail.com</a> to request Shop Owner access. Please include a Ropsten external address in your request.</p>
+                        </div>
                     </div>
                 )
             }    

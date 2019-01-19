@@ -24,6 +24,27 @@ export default class ListProducts extends Component{
         this.setState({itemKeys: items});
     }
 
+    handleShip(sku) {
+        console.log(sku);
+        this.ship(sku);
+    };
+
+    ship(_sku) {
+        const sku = parseInt(_sku);
+
+        const { drizzle, drizzleState } = this.props;
+        const contract = drizzle.contracts.Marketplace;
+    
+        // let drizzle know we want to call the `set` method with `value`
+        const stackId = contract.methods["shipItem"].cacheSend(sku, {
+          from: drizzleState.accounts[0]
+        });
+    
+        // save the `stackId` for later reference
+        this.setState({ stackId });
+        this.setState({txAlert: true});
+    };
+
     render() {
 
         const { Marketplace } = this.props.drizzleState.contracts;
@@ -77,7 +98,19 @@ export default class ListProducts extends Component{
                                 <td>{item.price}</td>
                                 <td>{item.buyer}</td>
                                 <td>{item.state}</td>
-                                <td><Button>Update State</Button></td>
+                                { item.state === '0' ? (
+                                        <td><Button disabled>Stocked</Button></td>
+                                    ) :
+                                        item.state === '1' ? (
+                                            <td><Button onClick={this.handleShip.bind(this,item.sku)}>Ship</Button></td>
+                                    ) : (
+                                        item.state === '2' ? (
+                                            <td><Button disabled>Shipped</Button></td>    
+                                    ) : (
+                                        <td><Button disabled>Delivered</Button></td>
+                                    ) 
+                                )}
+                                
                             </tr>
                         );
             

@@ -79,7 +79,12 @@ export default class ListShops extends Component{
                         <td>{shop.name}</td>
                         <td>{shop.category}</td>
                         <td>{shop.balance}</td>
-                        <td><Button onClick={this.handleWithdrawal.bind(this, index)}>Withdraw Balance</Button></td>
+                        {shop.balance === '0' ? (
+                            <td><Button disabled>Withdraw Balance</Button></td>
+                        ) : (
+                            <td><Button onClick={this.handleWithdrawal.bind(this, index)}>Withdraw Balance</Button></td>
+                        )}
+                        
                     </tr>
                 )
             
