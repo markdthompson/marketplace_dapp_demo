@@ -78,7 +78,7 @@ export default class ListShops extends Component{
                         <td>{index}</td>
                         <td>{shop.name}</td>
                         <td>{shop.category}</td>
-                        <td>{shop.balance}</td>
+                        <td>{this.props.drizzle.web3.utils.fromWei(shop.balance, 'finney')} </td>
                         {shop.balance === '0' ? (
                             <td><Button disabled>Withdraw Balance</Button></td>
                         ) : (
@@ -96,7 +96,7 @@ export default class ListShops extends Component{
                                 <th>ShopID</th>
                                 <th>Name</th>
                                 <th>Category</th>
-                                <th>Balance (wei)</th>
+                                <th>Balance (finney)</th>
                                 <th>Action</th>
                             </tr></thead>
                             <tbody>{shopList}</tbody>
