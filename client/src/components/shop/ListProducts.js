@@ -45,6 +45,27 @@ export default class ListProducts extends Component{
         this.setState({txAlert: true});
     };
 
+    handleArchive(sku) {
+        console.log(sku);
+        this.archive(sku);
+    };
+
+    archive(_sku) {
+        const sku = parseInt(_sku);
+
+        const { drizzle, drizzleState } = this.props;
+        const contract = drizzle.contracts.Marketplace;
+    
+        // let drizzle know we want to call the `set` method with `value`
+        const stackId = contract.methods["archiveItem"].cacheSend(sku, {
+          from: drizzleState.accounts[0]
+        });
+    
+        // save the `stackId` for later reference
+        this.setState({ stackId });
+        this.setState({txAlert: true});
+    };
+
     render() {
 
         const { Marketplace } = this.props.drizzleState.contracts;
@@ -107,7 +128,10 @@ export default class ListProducts extends Component{
                                         item.state === '2' ? (
                                             <td><Button disabled>Shipped</Button></td>    
                                     ) : (
-                                        <td><Button disabled>Delivered</Button></td>
+                                        item.state === '3' ? (
+                                            <td><Button onClick={this.handleArchive.bind(this,item.sku)}>Archive</Button></td>
+                                    ) : 
+                                         <td><Button disabled>Archived</Button></td>
                                     ) 
                                 )}
                                 

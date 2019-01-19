@@ -52,7 +52,8 @@ contract Marketplace{
       ForSale,
       Sold,
       Shipped,
-      Received
+      Received,
+      Archived
     }
 
     /// Item object structure
@@ -101,6 +102,7 @@ contract Marketplace{
     event SoldItem(uint _sku);
     event ShippedItem(uint _sku);
     event ReceivedItem(uint _sku);
+    event ArchivedItem(uint _sku);
 
     /**
      * modifiers
@@ -183,6 +185,12 @@ contract Marketplace{
     /// state machine pattern run only if state is Shipped
     modifier shipped(uint _sku) {
         require(items[_sku].state == State.Shipped,"item must have been shipped.");
+        _;
+    }
+
+    /// state machine pattern run only if state is Received
+    modifier received(uint _sku) {
+        require(items[_sku].state == State.Received,"item must have been received.");
         _;
     }
 
@@ -409,6 +417,18 @@ contract Marketplace{
         items[_sku].state = State.Received;
 
         emit ReceivedItem(_sku);
+    }
+
+    /**
+    @notice Archive an item
+    @dev Only the item's seller can archive an item, and the item must have been Shipped
+    @param _sku a uint index to look up the item to mark received
+    */
+    function archiveItem(uint _sku) public received(_sku){
+        require(items[_sku].seller == msg.sender, "Only the seller can mark an item archived.");
+        items[_sku].state = State.Archived;
+
+        emit ArchivedItem(_sku);
     }
 
     /// Getters

@@ -51,7 +51,7 @@ export default class AddProduct extends Component{
         if(this.state.buffer !== ''){
             //save document to IPFS, return its hash#
             const IPFS = require('ipfs-http-client');
-            const ipfs = new IPFS('ipfs.io', '5001', { protocol: 'https' });
+            const ipfs = new IPFS('ipfs.infura.io', '5001', { protocol: 'https' });
 
             await ipfs.add(this.state.buffer, (err, ipfsHash) => {
 
