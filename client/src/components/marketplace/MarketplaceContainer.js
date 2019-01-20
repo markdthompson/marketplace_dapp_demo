@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Shop from "./Shop";
 import ViewMarketplace from "./ViewMarketplace";
 
 export default class MarketplaceContainer extends Component{

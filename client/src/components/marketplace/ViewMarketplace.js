@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Table } from 'reactstrap';
 
 export default class ViewMarketplace extends Component{
@@ -49,9 +49,3 @@ export default class ViewMarketplace extends Component{
         );
     }
 }
-
-/*
-                       <Switch>
-                            <Route exact path="/shops/:id" render={(props) => <Shop {...props} drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} shops={this.props.shops} items={this.props.items} /> } /> 
-                        </Switch>
-                        */

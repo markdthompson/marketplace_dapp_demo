@@ -55,8 +55,8 @@ export default class ListShops extends Component{
         });
     
         // save the `stackId` for later reference
-        //this.setState({ stackId });
-        //this.setState({txAlert: true});
+        this.setState({ stackId });
+        this.setState({txAlert: true});
     };
 
     render() {
