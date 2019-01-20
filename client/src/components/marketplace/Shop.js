@@ -110,10 +110,10 @@ export default class Shop extends Component{
 
             // any shops in my store?
             if(myItems.length){
-
+                
                 const itemList = myItems.map((item, index) => {
-                    return <Card key={index} >
-                                <CardImg top src={'https://ipfs.io/ipfs/' +  item.ipfsImageHash} width="25"/>
+                    return <Card key={index}>
+                                <CardImg top src={'https://ipfs.io/ipfs/' +  item.ipfsImageHash} />
                                 <CardBody>
                                     <CardTitle>{item.name}</CardTitle>
                                     <CardSubtitle>{item.description}</CardSubtitle>

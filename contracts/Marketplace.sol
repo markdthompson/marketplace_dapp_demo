@@ -393,7 +393,7 @@ contract Marketplace{
         items[_sku].state = State.Sold;
         customerItemCount[msg.sender]++;
 
-        shops[items[_sku].shopID].balance = shops[items[_sku].shopID].balance + items[_sku].price;
+        shops[items[_sku].shopID].balance = shops[items[_sku].shopID].balance + msg.value;
         emit SoldItem(_sku);
     }
 
