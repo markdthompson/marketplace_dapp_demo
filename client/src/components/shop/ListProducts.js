@@ -25,7 +25,6 @@ export default class ListProducts extends Component{
     }
 
     handleShip(sku) {
-        console.log(sku);
         this.ship(sku);
     };
 
@@ -46,7 +45,6 @@ export default class ListProducts extends Component{
     };
 
     handleArchive(sku) {
-        console.log(sku);
         this.archive(sku);
     };
 
@@ -63,11 +61,11 @@ export default class ListProducts extends Component{
     
         // save the `stackId` for later reference
         this.setState({ stackId });
-        this.setState({txAlert: true});
+        this.setState({txAlert: true})
     };
 
     render() {
-
+        //console.log('ListProducts');
         const { Marketplace } = this.props.drizzleState.contracts;
         
         if(this.state.itemKeys === null){
@@ -161,7 +159,7 @@ export default class ListProducts extends Component{
                     }    
 
                 } catch(err){
-           
+                    console.log(err);
                 }
             }
         }

@@ -356,9 +356,12 @@ contract Marketplace{
         items.push(Item({shopID:_shopID, sku: itemCount, name:_name, description:_desc, ipfsImageHash:_hash, price:_price, state:State.ForSale, seller:msg.sender, buyer:_buyer}));
         shopItemCount[_shopID]++;
         sellerItemCount[msg.sender]++;
+
+        uint theItem = itemCount;
+
         itemCount++;
 
-        emit AddedItemToShop(items.length-1);
+        emit AddedItemToShop(theItem);
     }
 
     /**

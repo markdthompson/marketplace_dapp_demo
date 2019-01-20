@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import ListProducts from "./ListProducts";
-import { Button, Form, FormGroup, Input, Label, Alert, Row, Col } from 'reactstrap';
+import { Button, Form, FormGroup, Input, Label, Alert } from 'reactstrap';
 
 export default class AddProduct extends Component{
 
@@ -9,13 +8,12 @@ export default class AddProduct extends Component{
        
         this.state = { 
             stackId: null, 
-            prodTxAlert: false,
+            txAlert: false,
             buffer:''
           };
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.onProdDismiss = this.onProdDismiss.bind(this);
-        this.itemIDsUpdateCallback = this.itemIDsUpdateCallback.bind(this);
+        this.onDismiss = this.onDismiss.bind(this);
     }
 
     //Take file input from user
@@ -44,9 +42,9 @@ export default class AddProduct extends Component{
         const shopID = parseInt(e.target.shopID.value);
         const name = e.target.prod_name.value;
         const description = e.target.prod_desc.value;
-        const price = parseInt(e.target.prod_price.value);
+        const price = e.target.prod_price.value;
 
-        if(shopID === '' || description === '' || price === 0) return;
+        if(shopID === '' || name === '' || price === '') return;
         
         if(this.state.buffer !== ''){
             //save document to IPFS, return its hash#
@@ -70,8 +68,8 @@ export default class AddProduct extends Component{
         
       };
 
-    onProdDismiss(){
-        this.setState({prodTxAlert: false});
+    onDismiss(){
+        this.setState({TxAlert: false});
     }
     
     setValues(shopID, name, desc, price, hash) {
@@ -80,24 +78,24 @@ export default class AddProduct extends Component{
         const contract = drizzle.contracts.Marketplace;
         const account = drizzleState.accounts[0];
 
-        const _price = drizzle.web3.utils.toWei(price.toString(), 'finney'); 
+        const _price = drizzle.web3.utils.toWei(price, 'finney'); 
 
         // let drizzle know we want to call the `set` method with `value`
         const stackId = contract.methods["addItemToShop"].cacheSend(
-            shopID, 
-            name, 
-            desc,
-            hash,
-            _price,
-            {from: account}
+            
+                shopID, 
+                name, 
+                desc,
+                hash,
+                _price,
+                {from: account}
         );
-    
-        // save the `stackId` for later reference
+
         this.setState({ stackId });
-        this.setState({txAlert: true});
+        this.setState({txAlert: true});      
     };
     
-    getProdTxStatus(){
+    getTxStatus(){
         //console.log("in getTxStatus");
         // get the transaction states from the drizzle state
         const { transactions, transactionStack } = this.props.drizzleState;
@@ -115,31 +113,11 @@ export default class AddProduct extends Component{
         return `Transaction status: ${transactions[txHash].status}`;
       };
 
-    itemIDsUpdateCallback(){
-        //console.log("in itemIDsUpdateCallback");
-        const { Marketplace } = this.props.drizzleState.contracts;
-        const ids = Marketplace.getItemsBySeller[this.props.itemIDs];
-        //console.log(ids);
-        return (ids);
-    }
-
     render() {
-        //console.log("in render")
-        const ids = this.itemIDsUpdateCallback();
-
-        if(Boolean(ids && ids)) {
-
+        //console.log('AddProducts');
         return(
-            <Row>
-                <Col>
-                    <Row>
-                        <Col>
-                            <ListProducts drizzle={this.props.drizzle} drizzleState={this.props.drizzleState} ids={ids}  />
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                        <div>
+        
+            <div>
                 <h3>Add New Product</h3>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
@@ -172,70 +150,10 @@ export default class AddProduct extends Component{
                     </FormGroup>
                     
                     <FormGroup>
-                        <Alert color="info" isOpen={this.state.prodTxAlert} toggle={this.onProdDismiss}>{this.getProdTxStatus()}</Alert>
+                        <Alert color="info" isOpen={this.state.txAlert} toggle={this.onDismiss}>{this.getTxStatus()}</Alert>
                     </FormGroup>
                 </Form>
             </div>
-                        </Col>
-                    </Row>
-                </Col>
-
-            </Row>
-            )
-        } else {
-            return (
-                <Row>
-                <Col>
-                    <Row>
-                        <Col>
-                            <p>You haven't entered any products yet.</p>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                        <div>
-                <h3>Add New Product</h3>
-                <Form onSubmit={this.handleSubmit}>
-                    <FormGroup>
-                        <Label htmlFor="shopID">Shop ID</Label>
-                        <Input id="shopID" name="shopID" type="text" placeholder="0" />
-                    </FormGroup>
-
-                    <FormGroup>
-                        <Label htmlFor="prod_name">Name</Label>
-                        <Input id="prod_name" name="prod_name" type="text" placeholder="My New Product" />
-                    </FormGroup>
-
-                    <FormGroup>
-                        <Label htmlFor="prod_desc">Description</Label>
-                        <Input id="prod_desc" name="prod_desc" type="text" placeholder="This product is..." />
-                    </FormGroup>
-
-                    <FormGroup>
-                        <Label htmlFor="prod_price">Price</Label>
-                        <Input id="prod_price" name="prod_price" type="text" placeholder="3" />
-                    </FormGroup>
-
-                    <FormGroup>
-                        <Label htmlFor="prod_image">Product Image</Label>
-                        <Input id="prod_image" name="prod_image" type="file" onChange = {this.captureFile} />
-                    </FormGroup>
-                    
-                    <FormGroup>
-                        <Button>Create</Button>
-                    </FormGroup>
-                    
-                    <FormGroup>
-                        <Alert color="info" isOpen={this.state.prodTxAlert} toggle={this.onProdDismiss}>{this.getProdTxStatus()}</Alert>
-                    </FormGroup>
-                </Form>
-            </div>
-                        </Col>
-                    </Row>
-                </Col>
-
-            </Row>
-            )
-        }
+        )
     }
 }
