@@ -39,7 +39,7 @@ export default class ManageProducts extends Component{
                         <div>Loading...</div>
                     )
                 } else {
-                    console.log(ids);
+                    //console.log(ids);
                     return (
                             <Row>
                                 <Col>

@@ -13,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "npm": "^6.5.0",
-    "openzeppelin-solidity": "^2.1.1"
+    "npm": "^6.6.0",
+    "openzeppelin-solidity": "^2.1.2"
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CardDeck, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { CardColumns, CardDeck, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 export default class Shop extends Component{
@@ -139,9 +139,9 @@ export default class Shop extends Component{
                     <div>
                         <h1>{myShop.name}</h1>
                 
-                        <CardDeck>
+                        <CardColumns>
                             {itemList}
-                        </CardDeck>
+                        </CardColumns>
                                           
                         <div className="shop-footer">
                             <Link to="/">&lt;&lt; Back to Shops</Link>
