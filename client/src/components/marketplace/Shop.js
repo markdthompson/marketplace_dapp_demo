@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CardColumns, CardDeck, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { CardColumns, Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 import {Link} from 'react-router-dom';
 
 export default class Shop extends Component{
