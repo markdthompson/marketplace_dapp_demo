@@ -26,7 +26,7 @@ This pattern was implemented and is the basis of the buyer-seller supply chain m
 This pattern is not currently implemented. I'm considering how it could be implemented in the future as part of the buyer-seller dialog. Currently, when a buyer 'buys' an item, their funds are immediately transfered into the shop's balance. The shop owner could withdraw the funds prior to shipping the product, or the buyer receiving it. In a futre version, I'd like to place the funds in 'escrow' slowing payment down until the state of a purchased item has transitioned from Sold, all the way to Received, before funds would be released and available for widthdrawal by the seller.
 
 ## Factory
-This pattern is not implemented. It was implemented in an early version of the system, where orders were broken out as factory objects, but in an effort to minimize gas I opted to use structs instead. In the future I'd like to refactor the main contract and try the factory approach for comparison.
+This pattern is not implemented. It was implemented in an early version of the system, where shops and orders were broken out as factory objects, but in an effort to minimize gas I opted to use structs instead. In the future I'd like to refactor the main contract and try the factory approach for comparison.
 
 ## Name Registry
 This pattern was not implemented. In the future I may refactor the main contract to be upgradable, at which time I could implement this pattern.
