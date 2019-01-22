@@ -2,7 +2,7 @@
 While developing this demonstration, the following design patterns were considered:
 
 ## Fail Early & Loud
-This patttern is implemented throughout the Marketplace.sol contract. Common function requirements were codified wherever possible in modifiers, and exceptional requirements using Require() within individual functions.
+This patttern is implemented throughout the Marketplace.sol contract. Common function requirements are codified wherever possible in modifiers, with exceptional requirements using Require() within individual functions.
 
 ## Access Restriction
 This pattern was implemented both by using OpenZeppelin's Roles.sol access control library, and requiring owner status for some features. Administrator and ShopOwner access privileges are defined as roles.
