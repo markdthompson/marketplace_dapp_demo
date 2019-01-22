@@ -12,27 +12,39 @@ A demonstration walk-through script is available here:
 To run a local version, make sure you have Git, Truffle and Ganache-cli installed. On Debian/Ubuntu, open a terminal window and:
 
 `$ sudo apt install git-all`
+
 `$ npm install truffle -g`
+
 `$ npm install ganache-cli -g`
 
 Confirm Git, Truffle and Ganache-cli are installed:
+
 `$ git --version`
+
 `$ truffle version`
+
 `$ ganache-cli --version`
 
 Create your project directory:
+
 `$ mkdir myProject`
+
 `$ cd myProject`
 
 Clone the marketplace_dapp_demo repository:
+
 `git clone https://github.com/markdthompson/marketplace_dapp_demo.git`
 
 Install the required modules for Truffle:
+
 `$ cd marketplace_dapp_demo`
+
 `$ npm install`
 
 Install the required modules for React:
+
 `$ cd client`
+
 `$ npm install`
 
 ## Running the Demonstration
@@ -70,7 +82,7 @@ And run the shop test suite:
 `$ truffle test ./test/shopTests.js`
 
 ### Start the React Dapp
-If everything compiles, migrates and tests correctly, you can start up the React Dapp and interact with it at http://localhost:3000
+If everything compiles, migrates and tests correctly, you can start up the React Dapp and interact with it locally.
 
 Change directories from the marketplace_dapp_demo root into the React client directory:
 
@@ -80,9 +92,3 @@ Then run npm start:
 `:~/myProject/marketplace_dapp_demo/client$ npm start`
 
 After the webserver starts up, you should be able to access the demo at http://localhost:3000. Follow the instructions you see on the home page to get started with a walk through.
-
-
-
-
-
-
