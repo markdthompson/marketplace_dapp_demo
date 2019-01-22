@@ -75,7 +75,7 @@ export default class ListShops extends Component{
 
                 const shopList = shops.map((shop, index) =>
                     <tr key={index}>
-                        <td>{index}</td>
+                        <td>{shop.shopID}</td>
                         <td>{shop.name}</td>
                         <td>{shop.category}</td>
                         <td>{this.props.drizzle.web3.utils.fromWei(shop.balance, 'finney')} </td>

@@ -37,6 +37,7 @@ contract Marketplace{
 
     /// shop data structures
     struct Shop {
+        uint shopID;
         address shopOwner;
         string name;
         string category;
@@ -300,7 +301,7 @@ contract Marketplace{
     function createShop(string memory _name, string memory _category) public isShopOwner{
         require(bytes(_name).length > 0, "Operation failed. Name cannot be empty.");
 
-        shops.push(Shop({shopOwner:msg.sender, name:_name, category:_category, balance:0}));
+        shops.push(Shop({shopID:shopCount, shopOwner:msg.sender, name:_name, category:_category, balance:0}));
         ownerShopCount[msg.sender]++;
         shopCount++;
 
