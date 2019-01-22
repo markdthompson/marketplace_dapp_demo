@@ -1,5 +1,5 @@
 # Marketplace Dapp Demonstration
-This project is a blockchain marketplace supply chain management system demonstration. It is built using Truffle, Drizzle, React, React-Router and Reactstrap. To interact with the demonstration, you'll need MetaMask installed in your browser.
+This project is a blockchain marketplace supply chain management system demonstration. It is built using [Truffle](https://truffleframework.com/truffle), [Drizzle](https://truffleframework.com/drizzle), [React](https://reactjs.org/), [React-Router](https://www.npmjs.com/package/react-router) and [Reactstrap](https://reactstrap.github.io/). To interact with the demonstration, you'll need [MetaMask](https://metamask.io/) installed in your browser. To run locally, you'll also need [Ganache-cli](https://github.com/trufflesuite/ganache-cli) and [Git](https://git-scm.com/).
 
 ## Live Demo
 A live version of the demonstration is available on IPFS: 
