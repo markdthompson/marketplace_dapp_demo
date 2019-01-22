@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity 0.5.0;
 
 /// @notice used for access control on functions
 import "../node_modules/openzeppelin-solidity/contracts/access/Roles.sol";
@@ -10,10 +10,7 @@ import "../contracts/ListUtils.sol";
 @author Mark D. Thompson <thomesoni@gmail.com>
 @notice This contract is intended as the bootcamp final project demonstration
 @dev This contract uses OpenZeppelin's Roles.sol library for ACL
-@dev Installed OpenZeppelin using:
-$ npm init -y
-$ npm install --save-exact openzeppelin-solidity
-@dev It also uses my custom library AccountListLib.sol for account list management functions
+@dev It also uses my custom library ListUtils.sol for account list management functions
 */
 contract Marketplace{
     using Roles for Roles.Role;
@@ -33,7 +30,9 @@ contract Marketplace{
 
     /// account lists
     address[] private adminAccts;
+    uint private maxAdmins = 10;
     address[] private shopOwnerAccts;
+    uint private maxShopOwners = 10;
 
     /// shop data structures
     struct Shop {
@@ -44,7 +43,8 @@ contract Marketplace{
         uint balance;
     }
     Shop[] public shops;
-    uint shopCount = 0;
+    uint private shopCount = 0;
+    uint private maxShops = 30;
     mapping(address => uint) private ownerShopCount;
 
     /// item data structures
@@ -72,7 +72,8 @@ contract Marketplace{
     /// master item list
     Item[] public items;
     /// count of all items
-    uint itemCount = 0;
+    uint private itemCount = 0;
+    uint private maxItems = 360;
     /// shop item list mapping
     mapping(uint => uint) private shopItemCount;
     /// seller item list mapping
@@ -246,6 +247,7 @@ contract Marketplace{
     @dev Only admins should be able to add more admins
     */
     function addAdmin(address _newAdmin) public isAdmin stopInEmergency {
+        require(adminAccts.length < maxAdmins, 'Maximum number of admin accounts reached.');
         Roles.add(admins, _newAdmin);
         adminAccts.push(_newAdmin);
 
@@ -272,6 +274,7 @@ contract Marketplace{
     @dev This function shoulb be restricted in an emergency
     */
     function addShopOwner(address _shopOwner) public isAdmin stopInEmergency {
+        require(shopOwnerAccts.length < maxShopOwners, 'Maximum number of shop owners reached.');
         Roles.add(shopOwners, _shopOwner);
         shopOwnerAccts.push(_shopOwner);
 
@@ -298,7 +301,8 @@ contract Marketplace{
     @param _name a required string name for the shop
     @param _category an optional string name to categorize the shop
     */
-    function createShop(string memory _name, string memory _category) public isShopOwner{
+    function createShop(string memory _name, string memory _category) public isShopOwner stopInEmergency{
+        require(shopCount < maxShops, 'Maximum number of shops reached.');
         require(bytes(_name).length > 0, "Operation failed. Name cannot be empty.");
 
         shops.push(Shop({shopID:shopCount, shopOwner:msg.sender, name:_name, category:_category, balance:0}));
@@ -315,7 +319,7 @@ contract Marketplace{
     @param _name a required string name for the shop
     @param _category an optional string name to categorize the shop
     */
-    function editShop(uint _shopID, string memory _name, string memory _category) public {
+    function editShop(uint _shopID, string memory _name, string memory _category) public stopInEmergency{
         require(shops[_shopID].shopOwner == msg.sender, "Operation failed. Must be shopowner to edit shop.");
         require(bytes(_name).length > 0, "name cannot be empty.");
 
@@ -330,9 +334,10 @@ contract Marketplace{
     @dev Only the shop's shopowner can withdraw funds
     @param _shopID a uint index to look up the shop in the shop list
     */
-    function withdrawFunds(uint _shopID) public {
+    function withdrawFunds(uint _shopID) public stopInEmergency{
         require(shops[_shopID].shopOwner == msg.sender, "Operation failed. Must be shopowner to edit shop.");
-        
+        require(shops[_shopID].balance > 0);
+
         uint amount = shops[_shopID].balance;
         shops[_shopID].balance = 0;
         msg.sender.transfer(amount);
@@ -349,7 +354,8 @@ contract Marketplace{
     @param _hash an ipfs file hash for image lookup
     @param _price a required price for the item
     */
-    function addItemToShop(uint _shopID, string memory _name, string memory _desc, string memory _hash, uint _price) public {
+    function addItemToShop(uint _shopID, string memory _name, string memory _desc, string memory _hash, uint _price) public stopInEmergency{
+        require(itemCount < maxItems, 'Maximum number of items reached');
         require(shops[_shopID].shopOwner == msg.sender, "Operation failed. Must be shop owner to post item to store.");
         require(_shopID >= 0 && bytes(_name).length > 0 && _price > 0, "shopID, name and price cannot be empty.");
 
@@ -373,7 +379,7 @@ contract Marketplace{
     @param _name a required string name for the item
     @param _price a required price for the item
     */
-    function editItem(uint _sku, uint _shopID, string memory _name, string memory _desc, string memory _hash, uint _price) public forSale(_sku) {
+    function editItem(uint _sku, uint _shopID, string memory _name, string memory _desc, string memory _hash, uint _price) public forSale(_sku) stopInEmergency{
         require(shops[_shopID].shopOwner == msg.sender, "must be shop owner to edit an item's details.");
         require(_shopID >= 0 && bytes(_name).length > 0 && _price > 0, "shopID, name and price cannot be empty.");
 
