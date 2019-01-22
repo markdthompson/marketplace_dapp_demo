@@ -11,7 +11,7 @@ This pattern was implemented both by using OpenZeppelin's Roles.sol access contr
 This pattern was not implemented as I don't have an established end-of-life time/date  for the demonstration. It may live indefinitely as a portfolio piece.
 
 ## Mortal
-This pattern is implemented and is accessible only by the owner. selfDesrtuct() is called within a Destroy() function that is only callable by owner when the circuit breaker has been triggered.
+This pattern is implemented and is accessible only by the owner. It's used in combination with the Circuit Breaker pattern. selfDesrtuct() is called within a Destroy() function that is only callable by owner when the circuit breaker has been triggered.
 
 ## Pull Over Push Payments
 This pattern is implemented between buyers and sellers. When buyers purchase items, they pay into a balance maintained by each individual shop. Shopowners can then 'pull' the funds into their own accounts using a withdraw function.
