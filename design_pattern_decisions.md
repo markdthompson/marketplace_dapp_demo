@@ -26,10 +26,10 @@ This pattern was implemented and is the basis of the buyer-seller supply chain m
 This pattern is not implemented.
 
 ## Factory
-This pattern is not implemented. It was considered and an early version of the system broke out orders as factory objects, but in an effort to minimize gas I opted to use structs instead. In the future I'd like to refactor the main contract and try the factory approach for comparison.
+This pattern is not implemented. It was implemented in an early version of the system, where orders were broken out as factory objects, but in an effort to minimize gas I opted to use structs instead. In the future I'd like to refactor the main contract and try the factory approach for comparison.
 
 ## Name Registry
 This pattern was not implemented. In the future I may refactor the main contract to be upgradable, at which time I would use this pattern.
 
 ## Mapping Iterator
-This pattern was used return arrays of indexes, which could then be looped over in React to obtain the individual struct data for shops and items.
+This pattern was used to return arrays of indexes, which could then be looped over in React to obtain the individual struct data for shops and items.
