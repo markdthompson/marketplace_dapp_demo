@@ -6,7 +6,7 @@ My approach to development was to first block out the main contract in Remix bef
 Following is a list of common attacks and approaches taken to avoid them in this project. Several weaknesses were addressed by fixing the compiler version to 0.5.0, the latest compiler included in Truffle at the time of development. Some of those included the *Floating Pragma* & *Outdated Compiler Version* weaknesses. Several others were addressed by the 0.5.0 compiler itself, including *Incorrect Constructor Name*, *Use of Deprecated Solidity Functions*, and *State Variable Default Visibility*, as the Solc compiler in Remix complained if those issues arose. 
 
 ## Reentrancy
-In the functions where value is exchanged, I make sure to set values before calling trnasfer().
+In the functions where value is exchanged, I make sure to set values before calling transfer().
 
 ## Cross-function Reentrancy
 
