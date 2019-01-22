@@ -53,15 +53,15 @@ Install the required modules for React:
 To run the demonstration, you'll need to start Ganache-cli, seed your test accounts into MetaMask, compile the contract using Truffle, migrate the contract to Ganache-cli, run the Truffle test suites, and then start up the React dapp.
 
 ### Ganache-cli and MetaMask
-After installing, you need to start Ganache-cli, and import it's test accounts into MetaMask using the seed phrase output to the terminal when Ganache-cli starts up. Open another terminal session in another tab and run:
+After installing, start Ganache-cli and import it's test accounts into MetaMask using the seed phrase output to the terminal. Open another terminal session in another tab and run:
 
 `$ ganache-cli`
 
-Ganache-cli will start up and print it's ten test accounts and the seed phrase you'll use to re-login to MetaMask.
+Ganache-cli will start up and print ten test accounts and the seed phrase you'll import into MetaMask.
 
-Copy the seed phrase from the terminal, open your browser and click on the MetaMask icon to open it up. If already logged in, log out. On the MetaMask login screen, click the 'import using account seed phrase' link at the bottom of the screen. Paste the seed phrase in to the 'Wallet Seed' field, and input a new password into the password fields.
+Copy the seed phrase from the terminal, open your browser and click on the MetaMask icon to open it up. If already logged in, log out. On the MetaMask login screen, click the 'import using account seed phrase' link at the bottom of the screen. Paste the seed phrase into the 'Wallet Seed' field, and input a new password into the password fields.
 
-To walk through the demonstration, you'll want to use at least three of Ganache-cli's test accounts: Account 1 will automatically become owner of the contract and the deafault administrator.You'll also want to add Account 2 as a Shop Owner, and Account 3 can be used as a non-permissioned user to buy products from the shops.
+To walk through the demonstration, you'll want to use at least three test accounts: Account 1 will automatically become owner of the contract and the deafault administrator.You'll also want to add Account 2 as a Shop Owner, and Account 3 can be used as a non-permissioned user to buy products from the shops.
 
 ### Truffle Compile, Migrate & Test
 
