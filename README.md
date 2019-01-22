@@ -1,14 +1,14 @@
 # Marketplace Dapp Demonstration
 This project is a blockchain marketplace supply chain management system demonstration. It is built using Truffle, Drizzle, React, React-Router and Reactstrap. To interact with the demonstration, you'll need MetaMask installed in your browser.
 
+## Live Demo
 A live version of the demonstration is available on IPFS: 
 
 The demonstration contract is live on Ropsten:
 
 A demonstration walk-through script is available here:
 
-## Installation
-
+## Local Installation
 ### Install Git, Truffle & Ganache-cli
 To run a local version, make sure you have Git, Truffle and Ganache-cli installed. On Debian/Ubuntu, open a terminal window and:
 
