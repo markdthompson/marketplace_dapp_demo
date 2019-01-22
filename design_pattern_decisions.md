@@ -1,5 +1,12 @@
 # Design Pattern Considerations
-## State Machine for supply chain management
-## Circuit Breaker for security
-## Self Destruct for life cycle management
-## Withdrawal Pattern for balance management
+## Fail Early & Loud
+## Access Restriction
+## Auto Deprecation
+## Mortal
+## Pull Over Push Payments
+## Circuit Breaker
+## State Machine
+## Speed Bump
+## Factory
+## Name Registry
+## Mapping Iterator
