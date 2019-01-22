@@ -17,11 +17,19 @@ This pattern is implemented and is accessible only by the owner. selfDesrtuct() 
 This pattern is implemented between buyers and sellers. When buyers purchase items, they pay into a balance maintained by each individual shop. Shopowners can then 'pull' the funds into their own accounts using a withdraw function.
 
 ## Circuit Breaker
-This pattern is implemented as an administrator-accessible function. Any adminsitrator can throw the circuit breaker switch, which then restricts the ability to add new administrators, add new shop owners, create new shops, add shop items or withdraw funds from shops. A thrown circuit breaker also enables some admin features. The modifiers stopInEmergency and runInEmergency restrict functions accordingly. The Mortal pattern is executed as a 'runInEmergency' function.
+This pattern is implemented in modiefiers. The modifiers stopInEmergency and runInEmergency restrict functions accordingly. Any adminsitrator can throw the circuit breaker switch, which then restricts the ability to add new administrators, add new shop owners, create new shops, add shop items or withdraw funds from shops. A thrown circuit breaker also enables some admin features. The Mortal pattern is executed as a 'runInEmergency' function. 
 
 ## State Machine
+This pattern was implemented and is the basis of the buyer-seller supply chain management dialog. Items can be in only one state at a time; ForSale, Sold, Shipped, Received or Archived.
 
 ## Speed Bump
+This pattern is not implemented.
+
 ## Factory
+This pattern is not implemented. It was considered and an early version of the system broke out orders as factory objects, but in an effort to minimize gas I opted to use structs instead. In the future I'd like to refactor the main contract and try the factory approach for comparison.
+
 ## Name Registry
+This pattern was not implemented. In the future I may refactor the main contract to be upgradable, at which time I would use this pattern.
+
 ## Mapping Iterator
+This pattern was used return arrays of indexes, which could then be looped over in React to obtain the individual struct data for shops and items.
