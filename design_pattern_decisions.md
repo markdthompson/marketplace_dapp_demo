@@ -32,4 +32,4 @@ This pattern is not implemented. It was implemented in an early version of the s
 This pattern was not implemented. In the future I may refactor the main contract to be upgradable, at which time I could implement this pattern.
 
 ## Mapping Iterator
-This pattern is used to return arrays of indexes, which could then be looped over in React to obtain the individual struct data for shops and items.
+This pattern is used to return arrays of indexes, which are then be looped over in React to obtain the individual struct data for shops and items.
