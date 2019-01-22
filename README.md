@@ -1,5 +1,5 @@
 # Marketplace Dapp Demonstration
-This project is a blockchain marketplace supply chain management demonstration. It demonstrates a multi-shop marketplace, where shop owners carry on a private dialog with buyers regarding the state of purchases. Item states include ForSale, Sold, Shipped, Received, and Archived.
+This project is a blockchain marketplace supply chain management demonstration. It demonstrates a multi-shop marketplace, where shop owners carry on private dialogs with buyers regarding the state of purchases. Item states include ForSale, Sold, Shipped, Received, and Archived.
 
 The demonstration is built using [Truffle](https://truffleframework.com/truffle), [Drizzle](https://truffleframework.com/drizzle), [React](https://reactjs.org/), [React-Router](https://www.npmjs.com/package/react-router) and [Reactstrap](https://reactstrap.github.io/). 
 
