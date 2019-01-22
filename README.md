@@ -94,7 +94,7 @@ Run the admin test suite:
 `$ truffle test ./test/adminTests.js`
 
 ##### Shop Test Suite
-The Shop test suite covers shop owners' ability to create a shop, stock it with items, and un-permissioned users' ability to buy products. The supply chain management dialog between buyers and sellerts is also covered in thsis suite.
+The Shop test suite covers shop owners' ability to create a shop, stock it with items, and un-permissioned users' ability to buy products. The supply chain management dialog between buyers and sellers is also covered in thsis suite.
 And run the shop test suite:
 
 `$ truffle test ./test/shopTests.js`
