@@ -9,7 +9,7 @@ A demonstration walk-through script is available here:
 
 ## Installation
 
-### Install Git, Truufle & Ganache-cli
+### Install Git, Truffle & Ganache-cli
 To run a local version, make sure you have Git, Truffle and Ganache-cli installed. On Debian/Ubuntu, open a terminal window and:
 
 `$ sudo apt install git-all`
