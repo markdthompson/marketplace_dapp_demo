@@ -1,7 +1,7 @@
 # Marketplace Dapp Demonstration
 This project is a blockchain marketplace supply chain management demonstration. It's built using [Truffle](https://truffleframework.com/truffle), [Drizzle](https://truffleframework.com/drizzle), [React](https://reactjs.org/), [React-Router](https://www.npmjs.com/package/react-router) and [Reactstrap](https://reactstrap.github.io/). 
 
-The main Solidity contract, Marketplace.sol, uses [OpenZeppelin's](https://github.com/OpenZeppelin/openzeppelin-solidity) Roles.sol access control library to implement Administrator and Shop Owner privileges. It also uses a [list managment library](https://github.com/markdthompson/ListUtils) developed for this project.
+The main Solidity contract, Marketplace.sol, uses [OpenZeppelin's](https://github.com/OpenZeppelin/openzeppelin-solidity) Roles.sol access control library to implement Administrator and Shop Owner privileges. It also uses a [list managment library](https://github.com/markdthompson/ListUtils) developed specifically for this project.
 
 To interact with the demonstration, you'll need [MetaMask](https://metamask.io/) installed in your browser. To run locally, you'll also need [Ganache-cli](https://github.com/trufflesuite/ganache-cli) and [Git](https://git-scm.com/).
 
@@ -73,18 +73,28 @@ Open another terminal tab and cd into the demo directory:
 
 `$ cd ~/myProject/marketplace_dapp_demo`
 
+#### Compile
 Compile the Marketplace and Migration contracts:
 
 `$ truffle compile`
 
+#### Migrate
 Migrate the contracts to Ganacke-cli:
 
 `$ truffle migrate`
+
+#### Tests
+Tests were developed to cover the features demonstrated in the walk-through. There are fourteen tests in total, divided into two separate test suites. 
+
+##### Admin Test Suite
+The Admin test suit covers adding and removing shop owners and additional administrators, security restrictions on those features, and administrator control over the Circuit Breaker feature.
 
 Run the admin test suite:
 
 `$ truffle test ./test/adminTests.js`
 
+##### Shop Test Suite
+The Shop test suite covers shop owners' ability to create a shop, stock it with items, and un-permissioned users' ability to buy products. The supply chain management dialog between buyers and sellerts is also covered in thsis suite.
 And run the shop test suite:
 
 `$ truffle test ./test/shopTests.js`
