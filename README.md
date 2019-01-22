@@ -95,4 +95,4 @@ Change directories from the marketplace_dapp_demo root into the React client dir
 Then run npm start:
 `:~/myProject/marketplace_dapp_demo/client$ npm start`
 
-After the webserver starts up, you should be able to access the demo at http://localhost:3000. Follow the instructions you see on the home page to get started with a walk through.
+After the webserver starts up, you should be able to access the demo at http://localhost:3000. Make sure you're logged into MetaMask, that MetaMask is using localhost:8545 as the network, and that MetaMask's Account 1 is active. Follow the instructions you see on the home page to get started with a walk through.
