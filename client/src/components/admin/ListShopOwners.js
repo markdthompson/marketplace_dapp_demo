@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Table } from 'reactstrap';
 
-class ListShopOwners extends Component{
+export default class ListShopOwners extends Component{
 
     constructor(props){
         super(props);
@@ -73,5 +73,3 @@ class ListShopOwners extends Component{
         );
     }
 }
-
-export default ListShopOwners;

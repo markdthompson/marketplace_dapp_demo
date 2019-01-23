@@ -8,8 +8,11 @@ export default class ManageShops extends Component{
         super(props);
 
         this.state = { 
-            shopKeys: null
+            shopKeys: null,
+            refresh: false
         };
+
+        this.ManageShopsCallback = this.ManageShopsCallback.bind(this);
     }
 
     componentDidMount() {
@@ -22,6 +25,9 @@ export default class ManageShops extends Component{
         this.setState({ shopKeys});
     }
 
+    ManageShopsCallback(){
+        //this.setState({ refresh: !this.state.refresh });
+    }
     
     render() {
         if(this.state.shopKeys === null){
@@ -57,6 +63,7 @@ export default class ManageShops extends Component{
                                             <AddShop 
                                                 drizzle={this.props.drizzle} 
                                                 drizzleState={this.props.drizzleState} 
+                                                callback={this.ManageShopsCallback}
                                             />
                                         </Col>
                                     </Row>

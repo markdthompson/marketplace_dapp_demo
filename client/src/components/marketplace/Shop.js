@@ -11,8 +11,8 @@ export default class Shop extends Component{
             txAlert: false
         }
     
-        console.log('Shop');
-        console.log(this.props);
+        //console.log('Shop');
+        //console.log(this.props);
     }
 
     onDismiss(){
@@ -20,7 +20,7 @@ export default class Shop extends Component{
     }
 
     handleBuy(sku, price) {
-        console.log(price);
+        //console.log(price);
         this.buy(sku, price);
     };
 
@@ -42,7 +42,7 @@ export default class Shop extends Component{
     };
 
     handleReceive(sku) {
-        console.log(sku);
+        //console.log(sku);
         this.receive(sku);
     };
 

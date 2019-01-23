@@ -26,19 +26,6 @@ export default class ListShops extends Component{
         this.setState({shops});
     }
 
-    componentWillReceiveProps(props){
-        const {ids} = this.props;
-        if(props.ids !== ids){
-            const { drizzle, drizzleState } = this.props;
-            const contract = drizzle.contracts.Marketplace;
-            const account = drizzleState.accounts[0];
-
-            let shopID = this.state.shops.length;
-            this.state.shops.push(contract.methods["shops"].cacheCall(shopID, {from: account}));
-        }
-     
-    }
-
     handleWithdrawal(_shopID){
         this.setValue(_shopID);
     }

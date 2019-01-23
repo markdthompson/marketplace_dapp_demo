@@ -14,6 +14,7 @@ export default class AddShop extends Component{
         this.onDismiss = this.onDismiss.bind(this);
     }
 
+
     onDismiss(){
         this.setState({txAlert: false});
     }

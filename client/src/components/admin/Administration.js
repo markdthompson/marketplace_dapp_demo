@@ -31,12 +31,6 @@ export default class Administration extends Component{
         const Admin = Marketplace.isAnAdmin[this.state.isAdmin];
 
         if(Boolean(Admin && Admin.value)) {
-
-            /*
-                               <Breadcrumb>
-                        <BreadcrumbItem active>Admin</BreadcrumbItem>
-                    </Breadcrumb>
-            */
                
         return(
             <Row id="administration">

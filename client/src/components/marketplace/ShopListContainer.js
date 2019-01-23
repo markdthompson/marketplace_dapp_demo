@@ -12,8 +12,8 @@ export default class ShopListContainer extends Component{
             match: null
         };
 
-        console.log("shopListContainer");
-        console.log(this.props);
+        //console.log("shopListContainer");
+        //console.log(this.props);
     }
 
     componentDidMount() {
@@ -71,4 +71,3 @@ export default class ShopListContainer extends Component{
         }
     }
 }
- 

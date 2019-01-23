@@ -2,6 +2,8 @@ pragma solidity 0.5.0;
 
 /// @notice used for access control on functions
 import "../node_modules/openzeppelin-solidity/contracts/access/Roles.sol";
+/// @notice used for buyItem & withdraw functions
+import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 /// @notice used for array/list reordering following item deletion
 import "../contracts/ListUtils.sol";
 
@@ -14,7 +16,7 @@ import "../contracts/ListUtils.sol";
 */
 contract Marketplace{
     using Roles for Roles.Role;
-
+    using SafeMath for uint;
     /**
      * storage variables
      */
@@ -262,10 +264,9 @@ contract Marketplace{
         require(adminAccts[_index] != owner, "Can't remove admin perms from owner.");
         Roles.remove(admins, adminAccts[_index]);
 
-        emit RemovedAdminAccess(adminAccts[_index]);
         delete adminAccts[_index];
-
         adminAccts = ListUtils.AddressReorderSort(adminAccts, _index);
+        emit RemovedAdminAccess(adminAccts[_index]);
     }
 
     /**
@@ -289,10 +290,9 @@ contract Marketplace{
     function removeShopOwner(uint _index) public isAdmin{
         Roles.remove(shopOwners, shopOwnerAccts[_index]);
 
-        emit RemovedShopOwnerAccess(shopOwnerAccts[_index]);
         delete shopOwnerAccts[_index];
-
         shopOwnerAccts = ListUtils.AddressReorderSort(shopOwnerAccts, _index);
+        emit RemovedShopOwnerAccess(shopOwnerAccts[_index]);
     }
 
     /**
@@ -336,7 +336,7 @@ contract Marketplace{
     */
     function withdrawFunds(uint _shopID) public stopInEmergency{
         require(shops[_shopID].shopOwner == msg.sender, "Operation failed. Must be shopowner to edit shop.");
-        require(shops[_shopID].balance > 0);
+        require(shops[_shopID].balance > 0, "balance must be greater than 0");
 
         uint amount = shops[_shopID].balance;
         shops[_shopID].balance = 0;
@@ -403,7 +403,7 @@ contract Marketplace{
         items[_sku].state = State.Sold;
         customerItemCount[msg.sender]++;
 
-        shops[items[_sku].shopID].balance = shops[items[_sku].shopID].balance + msg.value;
+        shops[items[_sku].shopID].balance = shops[items[_sku].shopID].balance.add(msg.value);
         emit SoldItem(_sku);
     }
 

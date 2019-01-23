@@ -11,8 +11,8 @@ export default class ShopContainer extends Component{
             shopKeys: null
         }
 
-        console.log("ShopContainer");
-        console.log(this.props);
+        //console.log("ShopContainer");
+        //console.log(this.props);
     }
 
     componentDidMount(){
@@ -38,7 +38,7 @@ export default class ShopContainer extends Component{
         const { Marketplace } = this.props.drizzleState.contracts;
 
         if(this.state.shopKeys === null || this.state.itemKeys === null){
-            console.log('loading..');
+            //console.log('loading..');
             return (
                 <div>Loading...</div>
             );

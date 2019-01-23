@@ -12,8 +12,8 @@ export default class MarketplaceListContainer extends Component{
             match: null
         };
 
-        console.log("MarketplaceListContainer");
-        console.log(this.props);
+        //console.log("MarketplaceListContainer");
+        //console.log(this.props);
     }
 
     componentDidMount() {

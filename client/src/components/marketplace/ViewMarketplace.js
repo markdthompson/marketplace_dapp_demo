@@ -9,12 +9,12 @@ export default class ViewMarketplace extends Component{
         this.state = { 
         };
 
-         console.log('ViewMarketplace');
-         console.log(this.props);
+         //console.log('ViewMarketplace');
+         //console.log(this.props);
     }
 
     render() {  
-        console.log(this.props);
+        //console.log(this.props);
             
             if(this.props.shops.length > 0 ){
 
