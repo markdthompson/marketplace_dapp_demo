@@ -15,7 +15,7 @@ const path = require("path");
 
 // for external network
 var HDWalletProvider = require("truffle-hdwallet-provider");
-var mnemonic = "cliff under transfer wagon limb museum subject scrub input unusual square kid";
+var mnemonic = "your mnemonic here";
 
 module.exports = {
   networks: {
