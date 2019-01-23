@@ -50,13 +50,39 @@ export default class MarketplaceContainer extends Component{
                     <h1>Welcome</h1>
                     <p>Welcome to the Marketplace Demo Dapp! To get started, follow these steps:</p>
 
-                    <h2>1) Add a Shop Owner</h2>
+                    <h2>I. Add a Shop Owner</h2>
+                    <ol>
+                        <li>Make sure you're logged into MetaMask as Account 1</li>
+                        <li>Click the 'Admin' link to the top left of the header</li>
+                        <li>Look to the bottom of the Admin page for the 'Add ShopOwner' section</li>
+                        <li>In MetaMask, copy another account address, and then paste it into the 'Enter Account Address' field</li>
+                        <li>Click the 'Add' Button</li>
+                        <li>MetaMask will prompt you to confirm the transaction, confirm it</li>
+                    </ol>
 
-                    <h2>2) Open a Shop</h2>
+                    <h2>II. Open a Shop</h2>
+                    <ol>
+                        <li>In MetaMask, switch to the account you added to the ShopOwners list in step I</li>
+                        <li>Reload the app to load the new account by clicking on the 'Marketplace Dapp Demo' link in the header</li>
+                        <li>Check the Active External Account field in the header to make sure you're logged in with the ShopOwner account</li>
+                        <li>Click the 'Manage Shops' link to the top left of the header</li>
+                        <li>In the middle of the Manage Shops page find the 'Open Shop' section</li>
+                        <li>Type in your shop name and category and click 'Create'</li>
+                        <li>MetaMask will prompt you to confirm the transaction, confirm it</li>
+                        <li>Click the 'Marketplace' link in the header to check if your shop is now listed</li>
+                    </ol>
+                    <h2>III. Add Some Products</h2>
+                    <ol>
+                        <li>While still logged in as ShopOwner, click again on the 'Manage Shops' link in the header</li>
+                        <li>Toward the bottom of the Manage Shops page find the 'Add New Product' section</li>
+                        <li>Type in the shop id, name, description, price and choose an image to upload - click 'Create'</li>
+                        <li>MetaMask will prompt you to confirm the transaction, confirm it</li>
+                        <li>Click the 'Marketplace' link in the header and click into your shop</li>
+                        <li>Your product should now be listed</li>
+                    </ol>
 
-                    <h2>3) Add Some Products</h2>
-
-                    <h2>4) Tell Your Friends!</h2>
+                    <h2>IV. Tell Your Friends!</h2>
+                                    
                     </div>
                 )
             } else {

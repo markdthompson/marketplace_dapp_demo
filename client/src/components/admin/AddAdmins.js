@@ -70,7 +70,7 @@ export default class AddAdmins extends Component{
                     </FormGroup>
                     
                     <FormGroup>
-                        <Alert color="success" isOpen={this.state.txAlert} toggle={this.onDismiss}>{this.getTxStatus()}</Alert>
+                        <Alert color="info" isOpen={this.state.txAlert} toggle={this.onDismiss}>{this.getTxStatus()}</Alert>
                     </FormGroup>
                 </Form>
             </div>
