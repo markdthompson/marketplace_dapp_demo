@@ -12,20 +12,34 @@ export default class ActiveAddresses extends Component{
         const ActiveUser = drizzleState.accounts[0];
         const ActiveContract = contract.address;
 
+        let network;
+
+        switch(networkID){
+            case 3: 
+                network = 'Ropsten';
+                break;
+            case 4: 
+                network = 'Rinkeby';
+                break;
+
+            default:
+                network = '';
+        }
+
         const tableStyle = {
             marginBottom: 40
         }
 
-        const ActiveUserLink = <a target="_blank" href={'https://ropsten.etherscan.io/address/' + ActiveUser}>{ActiveUser}</a>;
-        const ActiveContractLink = <a target="_blank" href={'https://ropsten.etherscan.io/address/' + ActiveContract}>{ActiveContract}</a>;
+        const ActiveUserLink = <a target="_blank" href={'https://'+ network +'.etherscan.io/address/' + ActiveUser}>{ActiveUser}</a>;
+        const ActiveContractLink = <a target="_blank" href={'https://'+ network +'.etherscan.io/address/' + ActiveContract}>{ActiveContract}</a>;
 
         return(
             <Table size="sm" style={tableStyle} bordered responsive>
                 <thead><tr><th>Network</th><th>Active External Account</th><th>Active Contract Account</th></tr></thead>
                 <tbody><tr>
-                    <td>{(networkID === 3) ? 'Ropsten' : 'Development'}</td>
-                    <td>{(networkID === 3) ? ActiveUserLink : ActiveUser}</td>
-                    <td>{(networkID === 3) ? ActiveContractLink : ActiveContract}</td>
+                    <td>{(networkID === 3 || networkID === 4) ? network : 'Development'}</td>
+                    <td>{(networkID === 3 || networkID === 4) ? ActiveUserLink : ActiveUser}</td>
+                    <td>{(networkID === 3 || networkID === 4) ? ActiveContractLink : ActiveContract}</td>
                 </tr></tbody>
             </Table>
         )
