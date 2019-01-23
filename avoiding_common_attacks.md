@@ -1,5 +1,5 @@
 # Avoiding Common Attacks
-The [SWC Registry](https://smartcontractsecurity.github.io/SWC-registry/) was consulted regularly throughout the development of this Dapp. Security was integral to the development process.
+I consulted the [SWC Registry](https://smartcontractsecurity.github.io/SWC-registry/) regularly throughout the development of this Dapp. Security was integral to the development process.
 
 My approach to development was to first block out the main contract in Remix before bringing it into the Truffle project. After I could successfully walk through the basic functionality in Remix, I created the Truffle project and compiled, migrated, and wrote the tests in Truffle. I then built out the UI in Truffle, occasionally needing to circle back and tweak the contract as the interface requirements became clearer.
 
