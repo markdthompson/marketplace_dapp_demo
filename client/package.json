@@ -1,6 +1,7 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "marketplace_dapp_demo",
+  "version": "1.0.0",
+  "description": "Mark Thompson's ConsenSys 2018/2019 Developer Program Final Project",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.2.1",
@@ -8,7 +9,7 @@
     "drizzle-react": "^1.2.0",
     "drizzle-react-components": "^1.2.0",
     "ipfs-http-client": "^28.1.1",
-    "npm": "^6.5.0",
+    "npm": "^6.6.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
