@@ -69,7 +69,7 @@ export default class AddProduct extends Component{
       };
 
     onDismiss(){
-        this.setState({TxAlert: false});
+        this.setState({txAlert: false});
     }
     
     setValues(shopID, name, desc, price, hash) {
