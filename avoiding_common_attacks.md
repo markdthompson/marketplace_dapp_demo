@@ -1,5 +1,5 @@
 # Avoiding Common Attacks
-The [SWC Registry](https://smartcontractsecurity.github.io/SWC-registry/) was consulted regularly throughout the development of this Dapp. Security was integral to the development process.
+I consulted the [SWC Registry](https://smartcontractsecurity.github.io/SWC-registry/) regularly throughout the development of this Dapp. Security was integral to the development process.
 
 My approach to development was to first block out the main contract in Remix before bringing it into the Truffle project. After I could successfully walk through the basic functionality in Remix, I created the Truffle project and compiled, migrated, and wrote the tests in Truffle. I then built out the UI in Truffle, occasionally needing to circle back and tweak the contract as the interface requirements became clearer.
 
@@ -9,13 +9,16 @@ Following is a list of common attacks and approaches taken to avoid them in this
 In the functions where value is exchanged, I make sure to set values before calling transfer().
 
 ## Cross-function Reentrancy
+Same as above, to avoid cross-function reentrancy attacks, I make sure to set states before transfering value.
 
 ## Front Running
-Timing is not a critical factor in this Dapp; and there isn't significant incentive to be first, as in an auction. 
+--- Timing is not a critical factor in this Dapp; and there isn't significant incentive to be first, as in an auction. --- 
 
 ## Timestamp Dependance
+--- There are no timestamp dependancies in this Dapp. ---
 
 ## Integer Overflow Underflow
+I'm using OpenZeppelin's SafeMath for integer operations to avoid overflow/underflow.
 
 ## Denial of Service
-In this demonstation, I'm living dangerously with my use of unlimited arrays. In a future update, I will implement paging, and limit the number of items processed at a given time in order to prevent DoS attacks.
+In this demonstation, I am using arrays for administrators, shopowners, shops and items, which could be weaknesses for DoS attacks. To defend against them, I'm setting maximum counts for each array. This is fine for this demonstration, but for future versions I'll move to a paging implementation to enable scaling. 

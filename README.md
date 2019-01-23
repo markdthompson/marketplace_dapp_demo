@@ -3,7 +3,7 @@ This project is a blockchain marketplace supply chain management demonstration. 
 
 The demonstration is built using [Truffle](https://truffleframework.com/truffle), [Drizzle](https://truffleframework.com/drizzle), [React](https://reactjs.org/), [React-Router](https://www.npmjs.com/package/react-router) and [Reactstrap](https://reactstrap.github.io/). 
 
-The main Solidity contract, Marketplace.sol, uses [OpenZeppelin's](https://github.com/OpenZeppelin/openzeppelin-solidity) Roles.sol access control library to implement Administrator and Shop Owner privileges. Marketplace.sol also uses a [list managment library](https://github.com/markdthompson/ListUtils) developed specifically for this project.
+The main Solidity contract, Marketplace.sol, uses [OpenZeppelin's](https://github.com/OpenZeppelin/openzeppelin-solidity) Roles.sol access control library to implement Administrator and Shop Owner privileges, and SafeMath.sol for safe integer operations. Marketplace.sol also uses a [list managment library](https://github.com/markdthompson/ListUtils) developed specifically for this project.
 
 To interact with the demonstration, you'll need [MetaMask](https://metamask.io/) installed in your browser. To run locally, you'll also need [Ganache-cli](https://github.com/trufflesuite/ganache-cli) and [Git](https://git-scm.com/).
 
