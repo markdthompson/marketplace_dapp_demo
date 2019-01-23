@@ -11,8 +11,11 @@
  *     gasPrice: 10000000000,
  *   },
  */
-
 const path = require("path");
+
+// for external network
+var HDWalletProvider = require("truffle-hdwallet-provider");
+var mnemonic = "cliff under transfer wagon limb museum subject scrub input unusual square kid";
 
 module.exports = {
   networks: {
@@ -20,7 +23,14 @@ module.exports = {
       host: "localhost",
       port: 8545,
       network_id: "*", // Match any network id
-      gas: 6000000
+      gas: 6000000,
+      gaslimit: 10000000000
+    },
+    ropsten: {
+      // must be a thunk, otherwise truffle commands may hang in CI
+      provider: () =>
+        new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/ddd29339767244cfa8e1c11a434709eb"),
+      network_id: '3',
     }
   },
 
