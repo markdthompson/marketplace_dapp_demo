@@ -1,15 +1,15 @@
 {
-  "main.css": "./static/css/main.1c18c46d.chunk.css",
-  "main.js": "./static/js/main.7a540bb0.chunk.js",
-  "main.js.map": "./static/js/main.7a540bb0.chunk.js.map",
-  "static/css/1.110198c5.chunk.css": "./static/css/1.110198c5.chunk.css",
-  "static/js/1.73c073d5.chunk.js": "./static/js/1.73c073d5.chunk.js",
-  "static/js/1.73c073d5.chunk.js.map": "./static/js/1.73c073d5.chunk.js.map",
-  "runtime~main.js": "./static/js/runtime~main.4a686d48.js",
-  "runtime~main.js.map": "./static/js/runtime~main.4a686d48.js.map",
-  "static/css/1.110198c5.chunk.css.map": "./static/css/1.110198c5.chunk.css.map",
-  "static/css/main.1c18c46d.chunk.css.map": "./static/css/main.1c18c46d.chunk.css.map",
-  "index.html": "./index.html",
-  "precache-manifest.f3bdf02f5037c88ef6868cccaf8f95ae.js": "./precache-manifest.f3bdf02f5037c88ef6868cccaf8f95ae.js",
-  "service-worker.js": "./service-worker.js"
+  "main.css": "./marketplace_dapp_demo/static/css/main.1c18c46d.chunk.css",
+  "main.js": "./marketplace_dapp_demo/static/js/main.33db6c17.chunk.js",
+  "main.js.map": "./marketplace_dapp_demo/static/js/main.33db6c17.chunk.js.map",
+  "static/css/1.110198c5.chunk.css": "./marketplace_dapp_demo/static/css/1.110198c5.chunk.css",
+  "static/js/1.cf28a3ae.chunk.js": "./marketplace_dapp_demo/static/js/1.cf28a3ae.chunk.js",
+  "static/js/1.cf28a3ae.chunk.js.map": "./marketplace_dapp_demo/static/js/1.cf28a3ae.chunk.js.map",
+  "runtime~main.js": "./marketplace_dapp_demo/static/js/runtime~main.afc92049.js",
+  "runtime~main.js.map": "./marketplace_dapp_demo/static/js/runtime~main.afc92049.js.map",
+  "static/css/1.110198c5.chunk.css.map": "./marketplace_dapp_demo/static/css/1.110198c5.chunk.css.map",
+  "static/css/main.1c18c46d.chunk.css.map": "./marketplace_dapp_demo/static/css/main.1c18c46d.chunk.css.map",
+  "index.html": "./marketplace_dapp_demo/index.html",
+  "precache-manifest.42ac1deecb608a5244b3a60b8d4fd6e7.js": "./marketplace_dapp_demo/precache-manifest.42ac1deecb608a5244b3a60b8d4fd6e7.js",
+  "service-worker.js": "./marketplace_dapp_demo/service-worker.js"
 }
