@@ -4,7 +4,7 @@
 This project is a blockchain marketplace supply chain management demonstration. It demonstrates a multi-shop marketplace, where shop owners carry on private dialogs with buyers regarding the state of purchases. Item states include ForSale, Sold, Shipped, Received, and Archived.
 
 ### Interaction Model
-The dapp defines three roles, Administrators, Shopowners, and customers. Administrators can add and remove new administrators and shopowners. Administrators can also trigger the circuit breaker, which prevents any new admins, shopowners, shops or products from being added. When the circuit breaker is engaged, the owner can destroy the contract. Administrators are automatically recognized, and the *Admin menu* is presented to them to access the admin tools.
+The dapp defines three roles, Administrators, Shopowners, and customers. Administrators can add and remove new administrators and shopowners. Administrators can also trigger the circuit breaker, which prevents any new admins, shopowners, shops or products from being added. When the circuit breaker is engaged, the owner can destroy the contract. Administrators are automatically recognized, and the *Admin* menu is presented to them to access the admin tools.
 
 Shopowners can create new shops and add products. Products consist of the shop id, a name, a description, a price and an optional image which is uploaded and served from IPFS. Shopowners are automatically recognized and the *Manage Shops* menu is presented allowing access to the shop management tools.
 
