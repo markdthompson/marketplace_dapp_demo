@@ -31,7 +31,7 @@ A live version of the DAPP is available on IPFS:
 [QmbkCZ7334RKQBCM3TrNUSHTsiS1u2MR7b7DbRuXgdRb7j](https://ipfs.io/ipfs/QmbkCZ7334RKQBCM3TrNUSHTsiS1u2MR7b7DbRuXgdRb7j)
 
 and also on Github Pages:
-[marketplace_dapp_demo](https://markdthompson.github.io/marketplace_dapp_demo/#/)
+[https://markdthompson.github.io/marketplace_dapp_demo](https://markdthompson.github.io/marketplace_dapp_demo/#/)
 
 ### Contract
 The contract is live on Ropsten:
