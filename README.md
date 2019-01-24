@@ -4,12 +4,17 @@
 This project is a blockchain marketplace supply chain management demonstration. It demonstrates a multi-shop marketplace, where shop owners carry on private dialogs with buyers regarding the state of purchases. Item states include ForSale, Sold, Shipped, Received, and Archived.
 
 ### Interaction Model
+
+#### Administrators
 The dapp defines three roles, Administrators, Shopowners, and customers. Administrators can add and remove new administrators and shopowners. Administrators can also trigger the circuit breaker, which prevents any new admins, shopowners, shops or products from being added. When the circuit breaker is engaged, the owner can destroy the contract. Administrators are automatically recognized, and the *Admin* menu is presented to them to access the admin tools.
 
+#### Shopowners
 Shopowners can create new shops, add products and withdraw balances from shops. Products consist of the shop id, a name, a description, a price and an optional image which is uploaded and served from IPFS. Shopowners are automatically recognized and the *Manage Shops* menu is presented allowing access to the shop management tools.
 
+#### Customers
 Customers are presented with the *Marketplace*, the list of shops created by shopowners. When customers buy products, they initiate a supply chain dialog with the shopowner. Purchased items disappear from the shop for everyone other than the custumer who purchased it. 
 
+#### Customer/Shopowner Purchase Dialog
 The item remains in the shop interface for the customer who purchased it however, and the button changes from *Buy* to *Ordered*. The shopowner can see this state transition in their shop tools and can change the state of the item to *Shipped*. This transition is reflected in the customer's view by the button chaning again to say *Receive*. Clicking the *Receive* button confirms the customer received the order, and again the state change is reflected in the shopowner's view by the item's state changing to *Archive* which indicates the transaction is fully complete and the order can be archived. 
 
 ### Development Environment, Tools & System Requirements
