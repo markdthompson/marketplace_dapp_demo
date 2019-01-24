@@ -4,7 +4,7 @@
 contract address: 0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355
 
 ## IPFS
-dapp hash: QmUguXsMakHxAXD7u2WpvMgLh5MSB8aMDJpXc2WBs7jnds
+dapp hash: QmWmq9iYPwbkZs39KSUUSAgGBfJpMzGJwyYYx1CQF7qWAS
 
 ## Github Pages
 dapp address: https://markdthompson.github.io/marketplace_dapp_demo/
