@@ -8,15 +8,19 @@ The main Solidity contract, Marketplace.sol, uses [OpenZeppelin's](https://githu
 To interact with the demonstration, you'll need [MetaMask](https://metamask.io/) installed in your browser. To run locally, you'll also need [Ganache-cli](https://github.com/trufflesuite/ganache-cli) and [Git](https://git-scm.com/).
 
 ## Live Demo
+
+### DAPP
 A live version of the DAPP is available on IPFS: 
 [QmWmq9iYPwbkZs39KSUUSAgGBfJpMzGJwyYYx1CQF7qWAS](https://ipfs.io/ipfs/QmWmq9iYPwbkZs39KSUUSAgGBfJpMzGJwyYYx1CQF7qWAS)
 
 and also on Github Pages:
 [marketplace_dapp_demo](https://markdthompson.github.io/marketplace_dapp_demo/#/)
 
+### Contract
 The contract is live on Ropsten:
 [0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://ropsten.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
 
+### Walkthru Script
 A demonstration walk-through script is available here:
 
 ## Local Installation
