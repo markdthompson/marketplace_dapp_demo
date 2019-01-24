@@ -1,7 +1,7 @@
 # Marketplace Dapp Demonstration
 
 ## Overview
-This project is a blockchain marketplace supply chain management demonstration. It demonstrates a multi-shop marketplace, where shop owners carry on private dialogs with buyers regarding the state of purchases. Item states include ForSale, Sold, Shipped, Received, and Archived.
+This project is a blockchain marketplace supply chain management demonstration. It presents a multi-shop marketplace, where shop owners carry on private dialogs with buyers regarding the state of purchases. Item states include ForSale, Sold, Shipped, Received, and Archived.
 
 ### Interaction Model
 
