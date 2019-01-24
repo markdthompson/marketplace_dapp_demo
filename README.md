@@ -1,6 +1,16 @@
 # Marketplace Dapp Demonstration
+
+## Overview
 This project is a blockchain marketplace supply chain management demonstration. It demonstrates a multi-shop marketplace, where shop owners carry on private dialogs with buyers regarding the state of purchases. Item states include ForSale, Sold, Shipped, Received, and Archived.
 
+### Interaction Model
+The dapp defines three roles, Administrators, Shopowners, and customers. Administrators can add and remove new administrators and shopowners. Administrators can also trigger the circuit breaker, which prevents any new admins, shopowners, shops or products from being added. When the circuit breaker is engaged, the owner can destroy the contract. Administrators are automatically recognized, and the *Admin menu* is presented to them to access the admin tools.
+
+Shopowners can create new shops and add products. Products consist of the shop id, a name, a description, a price and an optional image which is uploaded and served from IPFS. Shoponers are automatically recognized and the *Manage Shops* menu is presented allowing access to the shop management tools.
+
+Customers are presented with the *Marketplace*, the list of shops created by shopowners. When customers buy products, the initiate a supply chain dialog with the shopowner. Bought items disappear from the shop for everyone other than the custumer who purchased it. The item remains for the customer who purchased it, the button changes from *Buy* to *Ordered*. The shopowner can see this state transition in their shop tools and can change the state of the item to *Shipped*. This transition is reflected in the customer's view by the button chaning again to say *Receive*. Clicking the *Receive* button confirms the customer received the order, and again the state change is reflected in the shopowner's view by the item's state changing to *Archive* which indicates the transaction is fully complete and the order can be archived. 
+
+### Development Environment, Tools & System Requirements
 The demonstration is built using [Truffle](https://truffleframework.com/truffle), [Drizzle](https://truffleframework.com/drizzle), [React](https://reactjs.org/), [React-Router](https://www.npmjs.com/package/react-router) and [Reactstrap](https://reactstrap.github.io/). 
 
 The main Solidity contract, Marketplace.sol, uses [OpenZeppelin's](https://github.com/OpenZeppelin/openzeppelin-solidity) Roles.sol access control library to implement Administrator and Shop Owner privileges, and SafeMath.sol for safe integer operations. Marketplace.sol also uses a [list managment library](https://github.com/markdthompson/ListUtils) developed specifically for this project.
