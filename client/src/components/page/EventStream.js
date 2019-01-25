@@ -28,7 +28,7 @@ export default class EventStream extends Component{
     render() {
         let event = {
             name: null,
-            address: null,
+            txHash: null,
             block: null
         }
 
@@ -36,10 +36,11 @@ export default class EventStream extends Component{
 
         if(this.state.event !== null) {
             event.name = this.state.event.event;
-            event.address = this.state.event.address;
+            event.txHash = this.state.event.transactionHash;
             event.block = this.state.event.blockNumber;
 
-            output = <UncontrolledAlert color="info"><em>Last Event</em>: {event.name}, Address: {event.address}, BlockNumber: {event.block}</UncontrolledAlert>
+            output = <UncontrolledAlert color="info">
+                <em>Last Event</em>: {event.name}, Tx: <a href={'https://ropsten.etherscan.io/tx/' + event.txHash}>{event.txHash}</a>, BlockNumber: {event.block}</UncontrolledAlert>
         }
             
         return(
