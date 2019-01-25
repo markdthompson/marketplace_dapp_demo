@@ -32,11 +32,10 @@ Live versions of the DAPP are available on:
 * IPFS: [QmPDiGXbbWjffkKRFT2tNEs5DahUQdssh5t11QGySr4eWU](https://ipfs.io/ipfs/QmPDiGXbbWjffkKRFT2tNEs5DahUQdssh5t11QGySr4eWU)
 
 ### Contract
-The contract is live on Ropsten:
-[0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://ropsten.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
-
-and on Rinkeby:
-[0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://rinkeby.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
+The contract is live on:
+* Ropsten: [0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://ropsten.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
+* Rinkeby: [0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://rinkeby.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
+* Kovan:
 
 ### Walkthru Script
 A demonstration walk-through script is available here:
