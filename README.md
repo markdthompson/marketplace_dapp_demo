@@ -28,8 +28,8 @@ To interact with the demonstration, you'll need [MetaMask](https://metamask.io/)
 
 ### DAPP
 Live versions of the DAPP is available on IPFS: 
-* (Rinkeby - slightly faster) [QmaumQHXVkncLNZspJSn2Z9MtQQzESZtiqZyxKykr7EN2p](https://ipfs.io/ipns/QmaumQHXVkncLNZspJSn2Z9MtQQzESZtiqZyxKykr7EN2p)
-* (Ropsten) [QmPDiGXbbWjffkKRFT2tNEs5DahUQdssh5t11QGySr4eWU](https://ipfs.io/ipns/QmPDiGXbbWjffkKRFT2tNEs5DahUQdssh5t11QGySr4eWU)
+* (Rinkeby - slightly faster) [QmaumQHXVkncLNZspJSn2Z9MtQQzESZtiqZyxKykr7EN2p](https://ipfs.io/ipfs/QmaumQHXVkncLNZspJSn2Z9MtQQzESZtiqZyxKykr7EN2p)
+* (Ropsten) [QmPDiGXbbWjffkKRFT2tNEs5DahUQdssh5t11QGySr4eWU](https://ipfs.io/ipfs/QmPDiGXbbWjffkKRFT2tNEs5DahUQdssh5t11QGySr4eWU)
 
 and also on Github Pages:
 (Rinkeby) <https://markdthompson.github.io/marketplace_dapp_demo/#/>
