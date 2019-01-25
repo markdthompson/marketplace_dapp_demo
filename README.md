@@ -27,15 +27,19 @@ To interact with the demonstration, you'll need [MetaMask](https://metamask.io/)
 ## Live Demo
 
 ### DAPP
-A live version of the DAPP is available on IPFS: 
-[QmeHdS8EU39EDGBT8mthTEjPhXAdyyP6ZdwENRbgVE7YFV](https://ipfs.io/ipns/QmeHdS8EU39EDGBT8mthTEjPhXAdyyP6ZdwENRbgVE7YFV)
+Live versions of the DAPP is available on IPFS: 
+* (Rinkeby)[QmaumQHXVkncLNZspJSn2Z9MtQQzESZtiqZyxKykr7EN2p](https://ipfs.io/ipns/QmaumQHXVkncLNZspJSn2Z9MtQQzESZtiqZyxKykr7EN2p)
+* (Ropsten)[QmPDiGXbbWjffkKRFT2tNEs5DahUQdssh5t11QGySr4eWU](https://ipfs.io/ipns/QmPDiGXbbWjffkKRFT2tNEs5DahUQdssh5t11QGySr4eWU)
 
 and also on Github Pages:
-[https://markdthompson.github.io/marketplace_dapp_demo](https://markdthompson.github.io/marketplace_dapp_demo/#/)
+(Rinkeby) <https://markdthompson.github.io/marketplace_dapp_demo/#/>
 
 ### Contract
 The contract is live on Ropsten:
 [0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://ropsten.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
+
+and on Rinkeby:
+[0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://rinkeby.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
 
 ### Walkthru Script
 A demonstration walk-through script is available here:
