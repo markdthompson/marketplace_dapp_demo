@@ -26,6 +26,27 @@ export default class EventStream extends Component{
     }
 
     render() {
+        const { drizzleState } = this.props;
+
+        const networkID = drizzleState.web3.networkId;
+
+        let network;
+
+        switch(networkID){
+            case 3: 
+                network = 'Ropsten';
+                break;
+            case 4: 
+                network = 'Rinkeby';
+                break;
+            case 42: 
+                network = 'Kovan';
+                break;
+
+            default:
+                network = '';
+        }
+
         let event = {
             name: null,
             txHash: null,
@@ -39,8 +60,10 @@ export default class EventStream extends Component{
             event.txHash = this.state.event.transactionHash;
             event.block = this.state.event.blockNumber;
 
+            let txLink = <a href={'https://'+ network +'.etherscan.io/tx/' + event.txHash}>{event.txHash}</a>
+
             output = <UncontrolledAlert color="info">
-                <em>Last Event</em>: {event.name}, Tx: <a href={'https://ropsten.etherscan.io/tx/' + event.txHash}>{event.txHash}</a>, BlockNumber: {event.block}</UncontrolledAlert>
+                <em>Last Event</em>: {event.name}, Tx: {network != '' ? txLink : event.txHash}, BlockNumber: {event.block}</UncontrolledAlert>
         }
             
         return(
