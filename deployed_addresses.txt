@@ -1,6 +1,6 @@
 # Deployed Addresses
 
-## Constract
+## Contract
 Ropsten: 0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355
 Rinkeby: 0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355
 
