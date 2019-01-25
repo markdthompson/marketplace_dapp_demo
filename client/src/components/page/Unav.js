@@ -46,7 +46,7 @@ export default class Unav extends Component{
             <Row>
                 <Col>
                     <Navbar color="dark" dark expand="lg">
-                        <NavbarBrand href="/">Marketplace Dapp Demo</NavbarBrand>
+                        <NavbarBrand className="logo" href="./#/">Marketplace Dapp Demo</NavbarBrand>
                         <Nav className="ml-auto" navbar>
                             {navlist}
                         </Nav>

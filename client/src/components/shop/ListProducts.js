@@ -96,7 +96,8 @@ export default class ListProducts extends Component{
                             <div>Loading...</div>
                         )
                     } else {
-
+                        const imgBaseUrl = 'https://ipfs.io/ipfs/';
+                        
                         const itemList = items.map((item, index) =>
                             <tr key={index}>
                                 <td>{item.shopID}</td>
@@ -104,13 +105,13 @@ export default class ListProducts extends Component{
                                 <td>{item.sku}</td>
                                 <td>{item.description}</td>
                                 <td>
-                                    <a href={'https:ipfs.io/ipfs/' + item.ipfsImageHash} rel="noopener norefferrer" target="_blank"  >
+                                    <a href={ imgBaseUrl + item.ipfsImageHash} rel="noopener norefferrer" target="_blank"  >
                                         {(item.ipfsImageHash !== '') ?
                                             <img 
                                                 height="25" 
                                                 width="25" 
-                                                alt="" 
-                                                src={'https:ipfs.io/ipfs/' + item.ipfsImageHash} 
+                                                alt="product img"
+                                                src={imgBaseUrl + item.ipfsImageHash} 
                                             />
                                         : ''}
                                     </a>

@@ -1,24 +1,28 @@
 {
   "name": "marketplace_dapp_demo",
   "version": "1.0.0",
-  "description": "Mark Thompson's ConsenSys 2018/2019 Developer Program Final Project",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "bootstrap": "^4.2.1",
     "drizzle": "^1.2.4",
     "drizzle-react": "^1.2.0",
     "drizzle-react-components": "^1.2.0",
+    "gh-pages": "^2.0.1",
     "ipfs-http-client": "^28.1.1",
-    "npm": "^6.6.0",
+    "npm": "^6.7.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "reactstrap": "^7.0.2",
-    "web3": "^1.0.0-beta.37"
+    "web3": "^1.0.0-beta.37",
+    "yarn": "^1.13.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -6,3 +6,12 @@ body {
 .shop-footer {
     margin-top: 20px;
 }
+
+.logo {
+    color: #efefef;
+}
+
+.logo:hover {
+    color: #ddd;
+    text-decoration: none;
+}
