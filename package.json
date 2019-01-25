@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Mark Thompson's ConsenSys 2018/2019 Developer Program Final Project",
   "main": "truffle-config.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:markdthompson/marketplace_dapp_demo.git"
+  },
   "directories": {
     "test": "test"
   },
