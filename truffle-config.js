@@ -27,16 +27,19 @@ module.exports = {
       gaslimit: 10000000000
     },
     ropsten: {
-      // must be a thunk, otherwise truffle commands may hang in CI
       provider: () =>
         new HDWalletProvider(mnemonic, "https://ropsten.infura.io/v3/ddd29339767244cfa8e1c11a434709eb"),
       network_id: '3',
     },
     rinkeby: {
-      // must be a thunk, otherwise truffle commands may hang in CI
       provider: () =>
         new HDWalletProvider(mnemonic, "https://rinkeby.infura.io/v3/ddd29339767244cfa8e1c11a434709eb"),
       network_id: '4',
+    },
+    kovan: {
+      provider: () =>
+        new HDWalletProvider(mnemonic, "https://kovan.infura.io/v3/ddd29339767244cfa8e1c11a434709eb"),
+      network_id: '42',
     }
   },
 

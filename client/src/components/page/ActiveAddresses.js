@@ -21,6 +21,9 @@ export default class ActiveAddresses extends Component{
             case 4: 
                 network = 'Rinkeby';
                 break;
+            case 42: 
+                network = 'Kovan';
+                break;
 
             default:
                 network = '';
@@ -37,9 +40,9 @@ export default class ActiveAddresses extends Component{
             <Table size="sm" style={tableStyle} bordered responsive>
                 <thead><tr><th>Network</th><th>Active External Account</th><th>Active Contract Account</th></tr></thead>
                 <tbody><tr>
-                    <td>{(networkID === 3 || networkID === 4) ? network : 'Development'}</td>
-                    <td>{(networkID === 3 || networkID === 4) ? ActiveUserLink : ActiveUser}</td>
-                    <td>{(networkID === 3 || networkID === 4) ? ActiveContractLink : ActiveContract}</td>
+                    <td>{(networkID === 3 || networkID === 4 || networkID === 42) ? network : 'Development'}</td>
+                    <td>{(networkID === 3 || networkID === 4 || networkID === 42) ? ActiveUserLink : ActiveUser}</td>
+                    <td>{(networkID === 3 || networkID === 4 || networkID === 42) ? ActiveContractLink : ActiveContract}</td>
                 </tr></tbody>
             </Table>
         )
