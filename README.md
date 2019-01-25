@@ -28,7 +28,7 @@ To interact with the demonstration, you'll need [MetaMask](https://metamask.io/)
 
 ### DAPP
 A live version of the DAPP is available on IPFS: 
-[QmbkCZ7334RKQBCM3TrNUSHTsiS1u2MR7b7DbRuXgdRb7j](https://ipfs.io/ipfs/QmbkCZ7334RKQBCM3TrNUSHTsiS1u2MR7b7DbRuXgdRb7j)
+[QmPDiGXbbWjffkKRFT2tNEs5DahUQdssh5t11QGySr4eWU](https://ipfs.io/ipfs/QmPDiGXbbWjffkKRFT2tNEs5DahUQdssh5t11QGySr4eWU)
 
 and also on Github Pages:
 [https://markdthompson.github.io/marketplace_dapp_demo](https://markdthompson.github.io/marketplace_dapp_demo/#/)
