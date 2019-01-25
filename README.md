@@ -94,7 +94,7 @@ Ganache-cli will start up and print ten test accounts and the seed phrase you'll
 Copy the seed phrase from the terminal, open your browser and click on the MetaMask icon to open it up. If already logged in, log out. On the MetaMask login screen, click the 'import using account seed phrase' link at the bottom of the screen. Paste the seed phrase into the 'Wallet Seed' field, and input a new password into the password fields.
 
 ### localhost:8545
-In MetaMask, make sure you have the *localhot:8545* network selected. To walk through the demonstration, you'll minimally need Account 1, by may want to create an additional two test accounts: Account 1 automatically becomes owner of the contract and the default administrator, and you can add that account as a shopowner as well. Alternatively, you could assign Account 2 as a Shop Owner, and Account 3 can be used as a non-permissioned user to buy products from the shops. Setting up separate accounts allows you to see the different interface views between account types.
+In MetaMask, make sure you have the *localhot:8545* network selected. To walk through the demonstration, you'll minimally need Account 1, but may want to create an additional two test accounts: Account 1 automatically becomes owner of the contract and the default administrator, and you can add that account as a shopowner as well. Alternatively, you could assign Account 2 as a Shop Owner, and Account 3 can be used as a non-permissioned user to buy products from the shops. Setting up separate accounts allows you to see the different interface views between account types.
 
 ### Truffle Compile, Migrate & Test
 
