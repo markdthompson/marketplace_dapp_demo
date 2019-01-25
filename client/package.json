@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "homepage": "./",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:markdthompson/marketplace_dapp_demo.git"
+  },
   "dependencies": {
     "bootstrap": "^4.2.1",
     "drizzle": "^1.2.4",
