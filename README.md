@@ -29,7 +29,7 @@ To interact with the demonstration, you'll need [MetaMask](https://metamask.io/)
 ### DAPP
 Live versions of the DAPP are available on:
 * Github Pages: <https://markdthompson.github.io/marketplace_dapp_demo/#/>
-* IPFS: [QmPDiGXbbWjffkKRFT2tNEs5DahUQdssh5t11QGySr4eWU](https://ipfs.io/ipfs/QmPDiGXbbWjffkKRFT2tNEs5DahUQdssh5t11QGySr4eWU)
+* IPFS: [QmegHzwhnNJRvPQHPGaZiY5UhYurRgLUxUV4sMVBfVvAS4](https://ipfs.io/ipfs/QmegHzwhnNJRvPQHPGaZiY5UhYurRgLUxUV4sMVBfVvAS4)
 
 ### Contract
 The contract is live on:
