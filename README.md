@@ -32,7 +32,7 @@ Live versions of the DAPP are available on:
 * IPFS: [QmegHzwhnNJRvPQHPGaZiY5UhYurRgLUxUV4sMVBfVvAS4](https://ipfs.io/ipfs/QmegHzwhnNJRvPQHPGaZiY5UhYurRgLUxUV4sMVBfVvAS4)
 
 ### Contract
-The contract is live on:
+The contract is live and verified on:
 * Ropsten: [0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://ropsten.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
 * Rinkeby: [0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://rinkeby.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
 
