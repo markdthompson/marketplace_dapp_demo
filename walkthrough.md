@@ -1,4 +1,4 @@
-# Marketplace Dapp Demo Walkthru
+# Marketplace Dapp Demo Walkthrough Script
 
 ## I. Add a Shop Owner
 
