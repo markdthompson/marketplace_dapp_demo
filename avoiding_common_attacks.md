@@ -12,10 +12,10 @@ In the functions where value is exchanged, I make sure to set values before call
 Same as above, to avoid cross-function reentrancy attacks, I make sure to set states before transfering value.
 
 ## Front Running
---- Timing is not a critical factor in this Dapp; and there isn't significant incentive to be first, as in an auction. --- 
+Since this Dapp is not and exchange or auction, and item prices are fixed, front running was not a big concern. If auction features were to be added, I'd investigate batching or a pre-commit mechanism.
 
 ## Timestamp Dependance
---- There are no timestamp dependancies in this Dapp. ---
+This Dapp isn't dependant upon timestamps, and does not use block.number as a timestamp. If auction features that are time sensitive are incorporated, more consideration with be given to timing, including the 15 second rule.
 
 ## Integer Overflow Underflow
 I'm using OpenZeppelin's SafeMath for integer operations to avoid overflow/underflow.
