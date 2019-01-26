@@ -30,9 +30,9 @@
 6. Your product should now be listed
                   
 ## IV. Customer/ShopOwner Dialog
+After posting items for sale, the customer/shopOwner dialog proceeds as follows:
 
-1. ForSale <- ShopOwner
-2. Customer -> Buy Now
-3. Ship <- ShopOwner
-4. Customer -> Receive
-5. Archive <- ShopOwner
+1. Customer -> Buy Now
+2. Ship <- ShopOwner
+3. Customer -> Receive
+4. Archive <- ShopOwner
