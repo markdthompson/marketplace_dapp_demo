@@ -36,8 +36,8 @@ The contract is live on:
 * Ropsten: [0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://ropsten.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
 * Rinkeby: [0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://rinkeby.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
 
-### Walkthru Script
-A demonstration walk-through script is available here: [Marketplace Dapp Demo Walkthru](https://github.com/markdthompson/marketplace_dapp_demo/blob/master/Walkthru.md)
+### Walkthrough Script
+A demonstration walkthrough script is available here: [Marketplace Dapp Demo Walkthrough](https://github.com/markdthompson/marketplace_dapp_demo/blob/master/Walkthru.md)
 
 ## Local Installation
 ### Install Git, Truffle & Ganache-cli
