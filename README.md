@@ -39,6 +39,8 @@ The contract is live on:
 ### Walkthru Script
 A demonstration walk-through script is available here:
 
+[Marketplace Dapp Demo Walkthru](https://github.com/markdthompson/marketplace_dapp_demo/blob/master/Walkthru.md)
+
 ## Local Installation
 ### Install Git, Truffle & Ganache-cli
 To run a local version, make sure you have Git, Truffle and Ganache-cli installed. On Debian/Ubuntu, open a terminal window and:
