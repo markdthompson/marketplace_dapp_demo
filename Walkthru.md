@@ -12,7 +12,7 @@
 ## II. Open a Shop
 
 1. In MetaMask, switch to the account you added to the ShopOwners list in step I (if you gave your Account 1 ShopOwner permissions skip to step 4)
-2. Reload the app to load the new account by clicking on the 'Marketplace Dapp Demo' link in the header
+2. Reload the app to load the new account
 3. Check the Active External Account field in the header to make sure you're logged in with the ShopOwner account
 4. Click the 'Manage Shops' link to the top left of the header
 5. In the middle of the Manage Shops page find the 'Open Shop' section
