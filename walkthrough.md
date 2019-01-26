@@ -31,7 +31,8 @@
                   
 ## IV. Customer/ShopOwner Dialog
 
-1. Buy
-2. Ship
-3. Receive
-4. Archive
+1. ForSale <- ShopOwner
+2. Customer -> Buy Now
+3. Ship <- ShopOwner
+4. Customer -> Receive
+5. Archive <- ShopOwner
