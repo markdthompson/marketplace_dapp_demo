@@ -38,7 +38,7 @@ export default class ViewMarketplace extends Component{
                             <tbody>{shopList}</tbody>
                         </Table>
                         <div>
-                            <p>*Email me at <a href="mailto:thomesoni@gmail.com">thomesoni@gmail.com</a> to request Shop Owner access. Please include a Ropsten external address in your request.</p>
+                            <p>*Email me at <a href="mailto:thomesoni@gmail.com">thomesoni@gmail.com</a> to request Shop Owner access. Please include a Ropsten or Rinkeby external address in your request.</p>
                         </div>
                     </div>
                 )
