@@ -139,4 +139,4 @@ Then run npm start:
 
 `:~/myProject/marketplace_dapp_demo/client$ npm start`
 
-After the webserver starts up, access the demo at http://localhost:3000. Make sure you're logged into MetaMask, that MetaMask is using *Localhost 8545* as the network, and that MetaMask's Account 1 is active. Follow the instructions you see on the home page to get started with a walk through.
+After the webserver starts up, access the demo at http://localhost:3000. Make sure you're logged into MetaMask, that MetaMask is using *Localhost 8545* as the network, and that MetaMask's *Account 1* is active. Follow the instructions you see on the home page to get started with a walk through.
