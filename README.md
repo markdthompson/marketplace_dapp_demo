@@ -35,7 +35,7 @@ Live versions of the DAPP are available on:
 The contract is live and verified on:
 * Ropsten: [0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://ropsten.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
 * Rinkeby: [0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355](https://rinkeby.etherscan.io/address/0xa3DE857f0Cfb5ef9C0Ce79F2e47828cb93877355)
-* Kovan: [0x54789a396fc4B7f285D01eE227148d987EE6A83C](https://rinkeby.etherscan.io/address/0x54789a396fc4B7f285D01eE227148d987EE6A83C)
+* Kovan: [0x54789a396fc4B7f285D01eE227148d987EE6A83C](https://kovan.etherscan.io/address/0x54789a396fc4B7f285D01eE227148d987EE6A83C)
 
 ### Walkthrough Script
 A demonstration walkthrough script is available here: [Marketplace Dapp Demo Walkthrough](https://github.com/markdthompson/marketplace_dapp_demo/blob/master/walkthrough.md)
